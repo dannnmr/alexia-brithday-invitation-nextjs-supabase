@@ -36,14 +36,9 @@ export function RSVP() {
 
       if (sbError) throw sbError;
       
-      // Sincronizar con Google Sheets (no bloquea al usuario si falla)
-      try {
-        await submitToGoogleSheets("guest", {
-          nombre: name.trim(),
-        });
-      } catch (gsError) {
-        console.error("Error syncing with Google Sheets:", gsError);
-      }
+      // Sincronizar con Google Sheets en segundo plano (no bloquea al usuario)
+      submitToGoogleSheets("guest", { nombre: name.trim() })
+        .catch(gsError => console.error("Error syncing with Google Sheets:", gsError));
 
       setIsSuccess(true);
     } catch (err: any) {
@@ -122,7 +117,7 @@ export function RSVP() {
               transition={{ delay: 0.8 }}
               className="font-sans text-xs md:text-sm text-gray-400 tracking-widest font-light"
             >
-              Tus respuestas han sido guardadas.
+              Tus respuesta ha sido guardada.
             </motion.p>
           </motion.div>
         ) : (
@@ -130,9 +125,9 @@ export function RSVP() {
             <SectionHeader
               subtitle="Lista de Invitados"
               title="RSVP"
-              className="mb-6 min-[380px]:mb-10 w-full overflow-hidden px-1"
+              className="mb-4 min-[380px]:mb-3 w-full overflow-hidden px-1"
               titleClassName=" text-4xl min-[350px]:text-5xl min-[380px]:text-6xl md:text-7xl break-words leading-none mb-2 min-[380px]:mb-4 w-full text-white"
-              subtitleClassName="text-[#ff007f] font-bold text-[10px] min-[380px]:text-[12px] tracking-[0.4em] min-[380px]:tracking-[0.5em] mb-1 min-[380px]:mb-2"
+              subtitleClassName="text-[#ff007f] font-bold text-[10px] min-[380px]:text-[12px] tracking-[0.4em] min-[380px]:tracking-[0.5em] mb-2 min-[380px]:mb-3"
             />
             <div className="text-center mb-6 w-full -mt-4">
               <p className="font-sans text-[9px] min-[380px]:text-[10px] md:text-xs text-gray-400 tracking-widest min-[380px]:tracking-[0.15em] font-light max-w-sm mx-auto uppercase leading-relaxed px-2 min-[380px]:px-4">
@@ -149,12 +144,14 @@ export function RSVP() {
                 </label>
                 <input
                   id="name"
+                  name="name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Ej. Jennifer Hernandez"
                   className="w-full bg-transparent border-none focus:outline-none focus:ring-0 font-sans text-sm min-[380px]:text-base md:text-xl text-white placeholder-gray-600 tracking-wider"
                   disabled={isSubmitting}
+                  autoComplete="name"
                 />
               </div>
 

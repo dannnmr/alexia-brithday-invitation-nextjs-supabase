@@ -20,34 +20,43 @@ export function FloatingDecoration({
   ...props
 }: FloatingDecorationProps) {
   
+  // Extract custom opacity if present in className to animate to it (e.g. opacity-15 -> 0.15)
+  let targetOpacity = 1;
+  if (className) {
+    const opacityMatch = className.match(/opacity-(\d+)/);
+    if (opacityMatch) {
+      targetOpacity = parseInt(opacityMatch[1], 10) / 100;
+    }
+  }
+
   // Base variants that define the initial entrance based on the requested style
   const getVariants = (): Variants => {
     switch (animationStyle) {
       case "float":
          return {
             initial: { opacity: 0, y: 30 },
-            whileInView: { opacity: 1, y: 0, transition: { duration: 1.5 } }
+            whileInView: { opacity: targetOpacity, y: 0, transition: { duration: 1.5 } }
          };
       case "slideLeft":
          return {
             initial: { opacity: 0, x: -50, rotate: -20 },
-            whileInView: { opacity: 1, x: 0, rotate: 0, transition: { duration: 1.5 } }
+            whileInView: { opacity: targetOpacity, x: 0, rotate: 0, transition: { duration: 1.5 } }
          };
       case "slideRight":
          return {
             initial: { opacity: 0, x: 50, rotate: 20 },
-            whileInView: { opacity: 1, x: 0, rotate: 0, transition: { duration: 1.5, delay: 0.2 } }
+            whileInView: { opacity: targetOpacity, x: 0, rotate: 0, transition: { duration: 1.5, delay: 0.2 } }
          };
       case "spin":
          return {
              initial: { opacity: 0 },
-             whileInView: { opacity: 1, rotate: 360, transition: { duration: 40, repeat: Infinity, ease: "linear" } }
+             whileInView: { opacity: targetOpacity, rotate: 360, transition: { duration: 40, repeat: Infinity, ease: "linear" } }
          };
       case "fade":
       default:
          return {
             initial: { opacity: 0 },
-            whileInView: { opacity: 1, transition: { duration: 1.5 } }
+            whileInView: { opacity: targetOpacity, transition: { duration: 1.5 } }
          };
     }
   };

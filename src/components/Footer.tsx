@@ -1,86 +1,94 @@
 "use client";
 
-import { Heart } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { FloatingDecoration } from "./ui/FloatingDecoration";
 import { siteConfig } from "../config/invitation";
 
 export function Footer() {
   return (
-    <footer className="relative pt-10 pb-16 bg-[#000000] flex flex-col items-center justify-center overflow-hidden border-t border-white/10">
+    <footer className="relative py-8 md:py-10 bg-white flex flex-col items-center justify-center overflow-hidden border-t border-neutral-200">
       
-      {/* Sutil Grid de Fondo (Vibe de Club Nocturno/Pista de Luces) */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_at_center,black_30%,transparent_80%)] opacity-40 pointer-events-none z-0" />
+      {/* Grid de Fondo Sutil en gris muy claro */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.015)_1px,transparent_1px)] bg-size-[40px_40px] pointer-events-none z-0 opacity-80" />
       
-      {/* Elementos Decorativos de Fondo con animación sutil */}
-      <motion.div 
-        animate={{ y: [-8, 8, -8], rotate: [0, 5, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[5%] right-[2%] w-[100px] h-[100px] md:w-[150px] md:h-[150px] pointer-events-none opacity-20 mix-blend-screen z-0"
-      >
-        <Image src="/images/decorativas/starts.png" alt="Estrellas" fill className="object-contain filter drop-shadow-[0_0_15px_rgba(255,0,127,0.4)]" />
-      </motion.div>
-      <motion.div 
-        animate={{ y: [6, -6, 6], rotate: [-45, -40, -45] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[10%] left-[-2%] w-[120px] h-[120px] md:w-[200px] md:h-[200px] pointer-events-none opacity-25 z-0"
-      >
-        <Image src="/images/decorativas/flor.png" alt="Flor" fill className="object-contain filter brightness-90 contrast-125" />
-      </motion.div>
-      
-      {/* Resplandor central de neón fucsia profundo */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[200px] bg-linear-to-t from-[#ff007f]/15 via-transparent to-transparent blur-[60px] pointer-events-none z-0"></div>
+      {/* Sutiles brillos decorativos flotantes de fondo */}
+      <div className="absolute top-0 right-[5%] w-32 h-32 bg-pink-200/20 rounded-full blur-2xl pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-[5%] w-32 h-32 bg-[#ff007f]/5 rounded-full blur-2xl pointer-events-none z-0 animate-pulse" />
 
-      {/* Bloque de Despedida Impactante */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1 }}
-        className="flex flex-col items-center mb-8 relative z-10 w-full px-4"
-      >
-        {/* Badge superior editorial */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-6 md:w-10 h-px bg-linear-to-l from-[#ff007f] to-transparent"></div>
-          <span className="font-sans text-[8px] md:text-[10px] text-white/90 tracking-[0.4em] uppercase font-semibold text-center drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
-            Exclusive Invitation
-          </span>
-          <div className="w-6 md:w-10 h-px bg-linear-to-r from-[#ff007f] to-transparent"></div>
-        </div>
+      {/* Brillos y Estrellas flotantes en el fondo para que no se vea vacío */}
+      <FloatingDecoration 
+        src="/images/decorativas/estrella_glitter.png" 
+        alt="Estrella Glitter Fondo" 
+        className="top-[10%] left-[25%] w-12 h-12 opacity-25 rotate-[12deg] pointer-events-none z-0" 
+        animationStyle="float" 
+      />
+      <FloatingDecoration 
+        src="/images/decorativas/chrome_starts.png" 
+        alt="Brillo Plateado Fondo" 
+        className="bottom-[15%] right-[30%] w-14 h-14 opacity-30 pointer-events-none z-0" 
+        animationStyle="float" 
+      />
+      <FloatingDecoration 
+        src="/images/decorativas/estrella_glitter.png" 
+        alt="Estrella Glitter Derecha" 
+        className="top-[20%] right-[10%] w-10 h-10 opacity-20 -rotate-[8deg] pointer-events-none z-0" 
+        animationStyle="float" 
+      />
 
-        {/* Doble Capa Tipográfica: Vogue-Serif de Fondo + Pinyon Script de Frente */}
-        <div className="relative flex items-center justify-center w-full max-w-4xl py-2 mb-2">
-          <h2 className="font-serif tracking-[0.15em] text-[3rem] sm:text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] uppercase text-white/5 font-extrabold leading-none select-none text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        {/* LADO IZQUIERDO: Nombre de la Quinceañera y frase de despedida */}
+        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+          <div className="flex items-center gap-2">
+            <span className="font-sans text-[8px] md:text-[9.5px] text-[#ff007f] tracking-[0.35em] uppercase font-black drop-shadow-[0_0_10px_rgba(255,0,127,0.15)]">
+              Exclusive Pass
+            </span>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#ff007f] animate-ping" />
+          </div>
+          
+          <h2 className="font-pinyon text-6xl sm:text-6xl text-[#ff007f] leading-none my-1 select-none">
             {siteConfig.client.name}
           </h2>
-          <span className="absolute font-pinyon text-[4.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8.5rem] text-[#ff007f] drop-shadow-[0_0_20px_rgba(255,0,127,0.7),0_5px_10px_rgba(0,0,0,0.5)] transform -rotate-3 select-none text-center">
-            {siteConfig.client.name}
-          </span>
+          
+          <p className="font-sans text-[10px] md:text-[11px] text-[#f769b0] tracking-[0.25em] font-black uppercase mt-1 drop-shadow-[0_0_6px_rgba(255,0,127,0.15)]">
+            no dejes que te lo cuenten
+          </p>
         </div>
-        
-        <p className="font-sans text-[10px] md:text-xs text-white/60 tracking-[0.3em] font-light mt-6 uppercase text-center max-w-md leading-relaxed">
-          Prepara tu mejor outfit y <br />
-          <span className="text-[#ff007f] font-bold tracking-[0.35em] drop-shadow-[0_0_10px_rgba(255,0,127,0.4)]">no dejes que te lo cuenten</span>
-        </p>
-      </motion.div>
 
-      {/* Developer Signature con estilo de ticket de club VIP */}
-      <div className="flex flex-col items-center pt-6 border-t border-white/10 w-full max-w-md relative z-10 px-4">
-        <div className="w-1.5 h-1.5 rounded-full bg-[#ff007f] mb-3 animate-ping" />
-        
-        <p className="font-sans text-[8px] md:text-[9px] text-gray-500 tracking-[0.3em] uppercase mb-1 flex items-center gap-1.5 font-semibold">
-          Digital Pass Design <span className="text-[#ff007f] font-bold">●</span> Daniela Miranda
-        </p>
-        
+        {/* LADO DERECHO: Tarjeta/Voucher Creativa para Contactar al Diseñador */}
         <a 
           href="https://wa.me/59168183484" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="group relative font-sans text-[9px] md:text-[10px] text-gray-400 hover:text-white tracking-[0.2em] uppercase font-bold transition-all duration-300 py-1"
+          className="relative flex items-center justify-between gap-4 p-4 bg-[#faf9f6] border border-dashed border-[#ff007f]/30 hover:border-[#ff007f] rounded-xl transition-all duration-300 group shadow-xs hover:shadow-md cursor-pointer max-w-sm w-full md:w-auto shrink-0 select-none overflow-hidden"
         >
-          <span className="relative z-10">Solicita tu web aquí: +591 68183484</span>
-          <span className="absolute bottom-0 left-0 w-0 h-px bg-[#ff007f] transition-all duration-300 group-hover:w-full group-hover:shadow-[0_0_8px_rgba(255,0,127,1)]" />
+          {/* Muescas de ticket perforado a los lados */}
+          <div className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3.5 h-7 rounded-r-full bg-white border-y border-r border-dashed border-[#ff007f]/30 group-hover:border-[#ff007f]" />
+          <div className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-3.5 h-7 rounded-l-full bg-white border-y border-l border-dashed border-[#ff007f]/30 group-hover:border-[#ff007f]" />
+          
+          {/* Contenido del Ticket */}
+          <div className="flex flex-col text-left pl-3 pr-1">
+            <span className="text-[7.5px] uppercase tracking-[0.25em] text-[#ff007f] font-black">Digital Invitation Design</span>
+            <span className="text-[10.5px] font-sans text-neutral-800 font-extrabold uppercase mt-0.5 tracking-wider">Daniela Miranda</span>
+            <span className="text-[8px] font-sans text-neutral-500 font-medium tracking-normal mt-0.5">¿Quieres una invitación como esta?</span>
+          </div>
+          
+          {/* Botón de Acción dentro del Ticket */}
+          <div className="bg-[#ff007f] text-white px-3 py-1.5 rounded-lg text-[9px] uppercase tracking-wider font-black shadow-xs group-hover:bg-[#ff007f]/90 group-hover:scale-103 transition-all shrink-0 flex items-center gap-1">
+            <span>Contacto</span>
+            <svg 
+              className="w-2.5 h-2.5 transform group-hover:translate-x-0.5 transition-transform" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2.5" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </div>
         </a>
+
       </div>
     </footer>
   );

@@ -11,6 +11,7 @@ export function Intro() {
   const [isClosed, setIsClosed] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [particles, setParticles] = useState<{ id: number; x: number; y: number; size: number; color: string }[]>([]);
 
   useEffect(() => {
     // Prevent scrolling while intro is open
@@ -73,6 +74,24 @@ export function Intro() {
   }, [isOpening]);
 
   const handleOpen = () => {
+    // Generate explosion particles radiating outwards
+    const newParticles = Array.from({ length: 32 }).map((_, i) => {
+      const angle = (i * 360) / 32 + (Math.random() * 15 - 7.5);
+      const distance = 100 + Math.random() * 150;
+      const size = 5 + Math.random() * 7;
+      const colors = ["#ff007f", "#ffffff", "#00ffff", "#ffd700", "#c0c0c0"]; // Fuchsia, White, Cyan, Gold, Silver
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const rad = (angle * Math.PI) / 180;
+      return {
+        id: i,
+        x: Math.cos(rad) * distance,
+        y: Math.sin(rad) * distance,
+        size,
+        color
+      };
+    });
+    setParticles(newParticles);
+
     setIsOpening(true);
     if (audioRef.current) {
       audioRef.current.play().then(() => setIsPlaying(true)).catch((e) => console.log("Audio play prevented:", e));
@@ -158,20 +177,56 @@ export function Intro() {
             {!isOpening && (
               <motion.button
                 onClick={handleOpen}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                exit={{ scale: 2, opacity: 0 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
+                animate={{
+                  scale: [1, 1.03, 1],
+                  rotate: [0, 1, -1, 0],
+                }}
+                transition={{
+                  scale: { duration: 2.2, repeat: Infinity, ease: "easeInOut" },
+                  rotate: { duration: 4.5, repeat: Infinity, ease: "easeInOut" }
+                }}
+                whileHover={{ scale: 1.08, rotate: 3 }}
+                whileTap={{ scale: 0.92 }}
+                exit={{ scale: 1.8, opacity: 0 }}
                 className="absolute z-20 w-56 h-56 md:w-56 md:h-56 lg:w-64 lg:h-64 cursor-pointer drop-shadow-2xl flex items-center justify-center"
               >
                 <Image
-                  src="/images/invitation/broche_sobre.png"
+                  src="/images/invitation/brocheOF.png"
                   alt="Abrir invitación"
                   fill
                   className="object-contain"
                   priority
                 />
               </motion.button>
+            )}
+          </AnimatePresence>
+
+          {/* Explosion Particles */}
+          <AnimatePresence>
+            {particles.length > 0 && (
+              <div className="absolute inset-0 z-30 pointer-events-none flex items-center justify-center">
+                {particles.map((p) => (
+                  <motion.div
+                    key={p.id}
+                    initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+                    animate={{ 
+                      x: p.x, 
+                      y: p.y, 
+                      scale: 0, 
+                      opacity: 0,
+                      rotate: Math.random() * 360 
+                    }}
+                    transition={{ duration: 1.2, ease: [0.1, 0.8, 0.3, 1] }}
+                    className="absolute rounded-full"
+                    style={{
+                      width: p.size,
+                      height: p.size,
+                      backgroundColor: p.color,
+                      boxShadow: `0 0 10px ${p.color}`,
+                    }}
+                  />
+                ))}
+              </div>
             )}
           </AnimatePresence>
         </div>

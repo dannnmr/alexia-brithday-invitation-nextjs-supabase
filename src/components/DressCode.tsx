@@ -6,6 +6,7 @@ import { siteConfig } from "../config/invitation";
 import { SectionHeader } from "./ui/SectionHeader";
 import { AnimatedSection } from "./ui/AnimatedSection";
 import { Check, X, AlertCircle } from "lucide-react";
+import { FloatingDecoration } from "./ui/FloatingDecoration";
 
 type Sparkle = {
   id: number;
@@ -82,6 +83,19 @@ export function DressCode() {
           {/* === OPCIÓN 1: ORIGINAL (SELLO CIRCULAR - OSCURO) === */}
           {styleType === "original" && (
             <section className="relative py-16 md:py-24 px-10 bg-[#050505] flex flex-col items-center overflow-hidden w-full">
+              
+              <FloatingDecoration
+                src="/images/decorativas/estrella_glitter.png"
+                alt="Estrella Glitter"
+                className="top-[10%] left-[-5%] w-48 h-48 md:w-72 md:h-72 opacity-20 pointer-events-none z-0"
+                animationStyle="float"
+              />
+              <FloatingDecoration
+                src="/images/decorativas/estrella_glitter.png"
+                alt="Estrella Glitter"
+                className="bottom-[10%] right-[-5%] w-48 h-48 md:w-72 md:h-72 opacity-20 pointer-events-none z-0"
+                animationStyle="float"
+              />
               
               {/* Brillos animados de fondo */}
               <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -175,6 +189,19 @@ export function DressCode() {
           {styleType === "classic_white" && (
             <section className="relative py-16 md:py-24 px-10 bg-white flex flex-col items-center overflow-hidden w-full text-black">
               
+              <FloatingDecoration
+                src="/images/decorativas/estrella_glitter.png"
+                alt="Estrella Glitter"
+                className="top-[10%] left-[-5%] w-48 h-48 md:w-72 md:h-72 opacity-15 pointer-events-none z-0"
+                animationStyle="float"
+              />
+              <FloatingDecoration
+                src="/images/decorativas/estrella_glitter.png"
+                alt="Estrella Glitter"
+                className="bottom-[10%] right-[-5%] w-48 h-48 md:w-72 md:h-72 opacity-15 pointer-events-none z-0"
+                animationStyle="float"
+              />
+              
               {/* Brillos animados sutiles en gris/fucsia */}
               <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 {sparkles.map((s) => (
@@ -262,6 +289,20 @@ export function DressCode() {
           {/* === OPCIÓN 3: PLACA VIP DE NEÓN === */}
           {styleType === "badge" && (
             <section className="relative py-16 md:py-24 px-6 bg-[#050505] flex flex-col items-center justify-center w-full overflow-hidden text-center">
+              
+              <FloatingDecoration
+                src="/images/decorativas/estrella_glitter.png"
+                alt="Estrella Glitter"
+                className="top-[5%] left-[-5%] w-48 h-48 md:w-64 md:h-64 opacity-20 pointer-events-none z-0"
+                animationStyle="float"
+              />
+              <FloatingDecoration
+                src="/images/decorativas/estrella_glitter.png"
+                alt="Estrella Glitter"
+                className="bottom-[5%] right-[-5%] w-48 h-48 md:w-64 md:h-64 opacity-20 pointer-events-none z-0"
+                animationStyle="float"
+              />
+
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[#ff007f]/5 rounded-full blur-[120px] pointer-events-none z-0" />
               
               <div className="relative z-10 w-full max-w-xl mx-auto flex flex-col items-center pt-8">
@@ -325,6 +366,20 @@ export function DressCode() {
           {/* === OPCIÓN 4: EXPOSICIÓN DE FASHION GALLERY === */}
           {styleType === "gallery" && (
             <section className="relative py-16 md:py-24 px-6 bg-[#050505] flex flex-col items-center justify-center w-full overflow-hidden text-center">
+              
+              <FloatingDecoration
+                src="/images/decorativas/estrella_glitter.png"
+                alt="Estrella Glitter"
+                className="top-[10%] left-[-5%] w-48 h-48 md:w-72 md:h-72 opacity-25 pointer-events-none z-0"
+                animationStyle="float"
+              />
+              <FloatingDecoration
+                src="/images/decorativas/estrella_glitter.png"
+                alt="Estrella Glitter"
+                className="bottom-[10%] right-[-5%] w-48 h-48 md:w-72 md:h-72 opacity-25 pointer-events-none z-0"
+                animationStyle="float"
+              />
+
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-white/1 rounded-full blur-[90px] pointer-events-none" />
 
               <div className="relative z-10 w-full max-w-xl mx-auto flex flex-col items-center pt-8">
@@ -478,6 +533,20 @@ export function DressCode() {
           {/* === OPCIÓN 5: NYC EDITORIAL COLLAGE / STUDIO 54 === */}
           {styleType === "collage" && (
             <section className="relative py-16 md:py-24 px-6 bg-[#050505] flex flex-col items-center justify-center w-full overflow-hidden text-center">
+              
+              <FloatingDecoration
+                src="/images/decorativas/estrella_glitter.png"
+                alt="Estrella Glitter"
+                className="top-[10%] left-[-5%] w-48 h-48 md:w-72 md:h-72 opacity-20 pointer-events-none z-0"
+                animationStyle="float"
+              />
+              <FloatingDecoration
+                src="/images/decorativas/estrella_glitter.png"
+                alt="Estrella Glitter"
+                className="bottom-[10%] right-[-5%] w-48 h-48 md:w-72 md:h-72 opacity-20 pointer-events-none z-0"
+                animationStyle="float"
+              />
+
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[#ff007f]/5 rounded-full blur-[130px] pointer-events-none z-0" />
               
               <div className="relative z-10 w-full max-w-xl mx-auto flex flex-col items-center pt-8">

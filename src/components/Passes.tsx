@@ -16,7 +16,7 @@ export function Passes() {
       {/* Fondo sutil */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-2 md:px-4 flex flex-col items-center gap-8 md:gap-12 relative z-10 w-full">
+      <div className="max-w-4xl mx-auto px-2 md:px-4 flex flex-col items-center gap-2 md:gap-4 relative z-10 w-full">
         {/* Header de sección */}
         <SectionHeader
           title={siteConfig.passes.mainTitle}
@@ -34,7 +34,7 @@ export function Passes() {
             className="w-full flex rounded-xl md:rounded-3xl overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.8)] relative bg-white text-black max-w-[95vw] md:max-w-none mx-auto"
           >
             {/* ── CUERPO PRINCIPAL (Izquierda) ── */}
-            <div className="flex-1 flex p-2 md:p-6 relative">
+            <div className="flex-1 flex p-4 md:p-6 relative">
               
               {/* Código de barras vertical izquierdo */}
               <div className="w-5 md:w-12 h-full flex flex-col justify-center items-center gap-px md:gap-[1.5px] pr-2 md:pr-6 border-r md:border-r-2 border-black">

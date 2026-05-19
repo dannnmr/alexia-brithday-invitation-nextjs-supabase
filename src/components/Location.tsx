@@ -30,17 +30,17 @@ export function Location() {
     };
 
     return (
-      <section className="relative py-8 md:py-12 bg-[#0a0a0a] w-full flex flex-col items-center overflow-hidden">
-        
-        {/* Beachy Background Gradients */}
-        {/* <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-gradient-to-bl from-sky-200/40 to-transparent rounded-full blur-[120px] pointer-events-none z-0" />
-        <div className="absolute bottom-0 left-0 w-[60vw] h-[60vw] bg-gradient-to-tr from-orange-200/40 via-zinc-800/30 to-transparent rounded-full blur-[100px] pointer-events-none z-0" /> */}
-  
-       
+      <section className="relative py-8 md:py-12 bg-[#0a0a0a] w-full flex flex-col items-center overflow-hidden">     
         <FloatingDecoration 
           src="/images/decorativas/estatua_libertad.png" 
-          alt="Estrella de Mar" 
+          alt="Estatua" 
           className="bottom-0 md:bottom-[45%] -left-12 md:right-[10%] w-62 h-62 md:w-48 md:h-48 opacity-50"
+          animationStyle="float"
+        />
+        <FloatingDecoration 
+          src="/images/decorativas/direcciones.png" 
+          alt="Direciones" 
+          className="bottom-[-3%] md:bottom-[4%] -right-20 md:right-[5%] w-60 h-60 md:w-48 md:h-48 opacity-50"
           animationStyle="float"
         />
   
@@ -48,12 +48,6 @@ export function Location() {
           
           {/* Massive Summer Date & Time */}
           <AnimatedSection once className="flex flex-col items-center justify-center text-center w-full mb-2">
-             <SectionHeader 
-               title="" 
-               subtitle={siteConfig.event.topLabel} 
-               titleClassName="hidden"
-               className="mb-2 md:mb-4"
-             />
   
              {/* === TARJETA DE EVENTO — EDITORIAL MAGAZINE NIGHT === */}
              <motion.div
@@ -66,14 +60,14 @@ export function Location() {
                {/* Halos de luz de fondo */}
                <div className="absolute -top-10 left-1/4 w-40 h-40 bg-[#ff007f]/10 rounded-full blur-[60px] pointer-events-none" />
                <div className="absolute -bottom-6 right-1/4 w-32 h-32 bg-[#ff007f]/8 rounded-full blur-[50px] pointer-events-none" />
-  
+   
                {/* Tarjeta principal */}
-               <div className="relative rounded-2xl overflow-hidden bg-[#080808] border border-white/6 shadow-[0_40px_100px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.04)]">
+               <div className="relative rounded-2xl overflow-hidden bg-[#080808]/80 border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-md">
   
                  {/* Barra superior fucsia */}
-                 <div className="w-full h-[2px] bg-linear-to-r from-transparent via-[#ff007f] to-transparent" />
+                 <div className="w-full h-[2px] bg-linear-to-r from-transparent via-[#ff007f] to-transparent relative z-10" />
   
-                 <div className="relative flex flex-col px-0 pt-0 pb-0 overflow-hidden">
+                 <div className="relative flex flex-col px-0 pt-0 pb-0 overflow-hidden z-10">
   
                    {/* BLOQUE SUPERIOR: Día enorme como watermark + badge */}
                    <div className="relative flex items-center justify-between px-6 md:px-8 pt-6 md:pt-8 pb-4">

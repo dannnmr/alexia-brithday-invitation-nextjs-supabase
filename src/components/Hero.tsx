@@ -475,8 +475,9 @@ export function Hero() {
                 <Image src="/images/decorativas/estatua_libertad.png" alt="Estatua de la Libertad" fill className="object-contain object-bottom drop-shadow-[0_0_16px_rgba(192,192,192,0.3)]" />
               </div>
 
+              
               {/* Rascacielos adicionales de fondo */}
-              <div className="absolute bottom-0 right-[25%] w-32 h-[220px] z-5 pointer-events-none opacity-20">
+              <div className="absolute bottom-[-50] right-[28%] w-32 h-[280px] z-5 pointer-events-none opacity-60">
                 <Image src="/images/decorativas/skyscrapper.png" alt="Rascacielos" fill className="object-contain object-bottom" />
               </div>
 
@@ -484,13 +485,21 @@ export function Hero() {
               <motion.div 
                 animate={{ x: [0, 4, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-2 right-[4%] w-32 h-24 md:w-40 md:h-30 z-20 pointer-events-none select-none drop-shadow-[0_6px_12px_rgba(0,0,0,0.5)]"
+                className="absolute bottom-[-5%] right-[20%] w-32 h-32 md:w-40 md:h-30 z-20 pointer-events-none select-none drop-shadow-[0_6px_12px_rgba(0,0,0,0.5)]"
               >
                 <Image src="/images/decorativas/taxi2.png" alt="Taxi en puente" fill className="object-contain" />
               </motion.div>
 
               {/* Edificios iluminados a la derecha */}
               <div className="absolute bottom-0 right-[-5%] w-48 h-[360px] md:h-[288px] z-10 pointer-events-none opacity-90">
+                <Image src="/images/decorativas/edificio2.png" alt="Edificios" fill className="object-contain object-bottom drop-shadow-[0_0_16px_rgba(192,192,192,0.3)]" />
+              </div>
+              {/* Edificios iluminados a la derecha */}
+              <div className="absolute bottom-0 right-[15%] w-30 h-[300px] md:h-[288px] z-10 pointer-events-none opacity-90">
+                <Image src="/images/decorativas/edificio2.png" alt="Edificios" fill className="object-contain object-bottom drop-shadow-[0_0_16px_rgba(192,192,192,0.3)]" />
+              </div>
+              {/* Edificios iluminados a la derecha */}
+              <div className="absolute bottom-0 right-[-10%] w-30 h-[300px] md:h-[288px] z-10 pointer-events-none opacity-90">
                 <Image src="/images/decorativas/edificio2.png" alt="Edificios" fill className="object-contain object-bottom drop-shadow-[0_0_16px_rgba(192,192,192,0.3)]" />
               </div>
 

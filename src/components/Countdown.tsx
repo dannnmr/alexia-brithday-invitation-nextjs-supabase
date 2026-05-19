@@ -45,6 +45,17 @@ export function Countdown() {
     <div className="relative w-full py-10 md:py-16 px-4 flex flex-col items-center text-center overflow-hidden bg-[#050505]">
       {/* Fondo nocturno VIP */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,0,127,0.05)_0%,rgba(5,5,5,1)_80%)]" />
+
+      {/* Imagen de fondo de edificio B&W en la parte inferior */}
+      <div className="absolute inset-x-0 bottom-0 w-full h-[50%] md:h-[60%] opacity-35 pointer-events-none z-0">
+        <Image 
+          src="/images/decorativas/eficio_blackandwhite.png" 
+          alt="NYC Building BW Background" 
+          fill 
+          className="object-cover object-bottom" 
+          sizes="100vw"
+        />
+      </div>
       
       {/* Decoración Disco difuminada */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-[#ff007f]/10 rounded-full blur-[100px] pointer-events-none" />
@@ -104,7 +115,7 @@ export function Countdown() {
                 >
                   
                   {/* Glass overlay */}
-                  <div className="absolute inset-0 bg-linear-to-b from-white/2 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-linear-to-b from-white/10 to-transparent pointer-events-none" />
                   
                   {/* Horizontal split-flap line */}
                   <div className="absolute left-0 right-0 top-1/2 h-px bg-black/80 z-20 shadow-[0_1px_0_rgba(255,255,255,0.04),0_-1px_0_rgba(0,0,0,0.4)]" />
@@ -133,7 +144,7 @@ export function Countdown() {
                   <div className="absolute bottom-2 right-2 w-1.5 h-1.5 border-b border-r border-white/10 rounded-tr-sm pointer-events-none" />
                 </div>
                 
-                <span className="text-[7.5px] md:text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 group-hover:text-[#ff007f] transition-all duration-300">
+                <span className="text-[8px] md:text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-100 group-hover:text-[#ff007f] transition-all duration-300">
                   {item.label}
                 </span>
               </motion.div>

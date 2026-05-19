@@ -5,8 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Camera, Image as ImageIcon, UploadCloud, RotateCw, X, Plus, Heart } from "lucide-react";
 import { useDropzone } from "react-dropzone";
 import { supabase } from "@/lib/supabase";
-import Image from "next/image";
+import { compressImage } from "@/lib/imageCompressor";
 import { submitToGoogleSheets } from "@/lib/googleSheets";
+import { FloatingDecoration } from "./ui/FloatingDecoration";
 
 type Photo = {
   id: string;
@@ -75,18 +76,22 @@ export function Gallery() {
   }, []);
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
-    if (!file) return;
-
-    if (file.size > 5 * 1024 * 1024) {
-      setUploadError("La imagen excede el límite (Max: 5MB)");
-      return;
-    }
+    const rawFile = acceptedFiles[0];
+    if (!rawFile) return;
 
     setIsUploading(true);
     setUploadError("");
 
     try {
+      // Compress the image client-side before upload
+      const file = await compressImage(rawFile);
+
+      if (file.size > 5 * 1024 * 1024) {
+        setUploadError("La imagen excede el límite (Max: 5MB)");
+        setIsUploading(false);
+        return;
+      }
+
       const fileExt = file.name.split('.').pop();
       const fileName = `${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
       const filePath = `gallery/${fileName}`;
@@ -120,12 +125,9 @@ export function Gallery() {
         setCurrentIndex(0);
       }
 
-      // Registrar foto en Google Sheets
-      try {
-        await submitToGoogleSheets("foto", { foto_url: publicUrl });
-      } catch (gsError) {
-        console.error("Error syncing photo to Google Sheets:", gsError);
-      }
+      // Registrar foto en Google Sheets en segundo plano (no bloquea al usuario)
+      submitToGoogleSheets("foto", { foto_url: publicUrl })
+        .catch(gsError => console.error("Error syncing photo to Google Sheets:", gsError));
     } catch (err) {
       console.error(err);
       setUploadError("Error al procesar la imagen. Intenta nuevamente.");
@@ -144,6 +146,20 @@ export function Gallery() {
   return (
     <section className="relative py-8 md:py-16 px-6 bg-[#050505] flex flex-col items-center overflow-hidden">
       
+      {/* Elementos decorativos plateados (estilo disco) en el fondo */}
+      <FloatingDecoration 
+        src="/images/decorativas/chrome_starts.png" 
+        alt="Estrellas Plateadas" 
+        className="top-[20%] left-[-8%] w-60 h-60 md:w-80 md:h-80 opacity-40 pointer-events-none z-0" 
+        animationStyle="float" 
+      />
+      <FloatingDecoration 
+        src="/images/background/broche_disco.png" 
+        alt="Bola de Disco Plateada" 
+        className="bottom-[1%] right-[-16%] w-72 h-72 md:w-96 md:h-96 opacity-20 pointer-events-none z-0" 
+        animationStyle="spin" 
+      />
+
       {/* Decorative Neon Lighting (Cyberpunk/Disco VIP) */}
       <div className="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-linear-to-tr from-[#ff007f]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
       <div className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] bg-linear-to-bl from-cyan-500/10 to-[#ff007f]/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
@@ -206,7 +222,7 @@ export function Gallery() {
           </AnimatePresence>
         </motion.div>
 
-        {/* STACKED CARD SWIPER - TINDER STYLE */}
+        {/* STACKED CARD SWIPER*/}
         <div className="w-full relative z-10 flex flex-col items-center">
           {isLoading ? (
             <div className="w-full py-20 flex justify-center text-white">
@@ -245,9 +261,10 @@ export function Gallery() {
                         initial={{ scale: 0.8, opacity: 0, y: 50 }}
                         animate={{ 
                           scale: 1 - visualIndex * 0.05, 
-                          y: visualIndex * 20, 
-                          rotate: visualIndex % 2 === 0 ? visualIndex * 2 : -visualIndex * 2,
-                          opacity: 1 - visualIndex * 0.2
+                          y: visualIndex * 15, 
+                          x: visualIndex === 0 ? -4 : visualIndex === 1 ? 8 : -12,
+                          rotate: visualIndex === 0 ? -3 : visualIndex === 1 ? 4 : -7,
+                          opacity: 1 - visualIndex * 0.15
                         }}
                         exit={{ 
                           x: exitDirection === 'left' ? -300 : 300, 
@@ -256,14 +273,14 @@ export function Gallery() {
                           transition: { duration: 0.3 } 
                         }}
                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                        className={`absolute top-0 left-0 w-full h-full bg-[#111111] p-4 md:p-5 shadow-[0_15px_40px_rgba(0,0,0,0.8)] rounded-xl border border-white/10 flex flex-col ${isTop ? 'cursor-grab active:cursor-grabbing' : 'cursor-default pointer-events-none'}`}
+                        className={`absolute top-0 left-0 w-full h-full bg-[#fdfbf7] p-3.5 pb-14 md:pb-16 shadow-[0_20px_50px_rgba(0,0,0,0.4)] rounded-xs border border-neutral-200/60 flex flex-col ${isTop ? 'cursor-grab active:cursor-grabbing' : 'cursor-default pointer-events-none'}`}
                         style={{ zIndex: photos.length - currentIndex - visualIndex }}
                         drag={isTop ? "x" : false}
                         dragConstraints={{ left: 0, right: 0 }}
                         dragElastic={0.7}
                         onDragEnd={isTop ? handleDragEnd : undefined}
                       >
-                        <div className="relative overflow-hidden w-full h-full bg-[#050505] rounded-md pointer-events-none">
+                        <div className="relative overflow-hidden w-full h-full bg-[#f3f3f3] border border-black pointer-events-none">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img 
                             src={photo.url_foto} 
@@ -272,16 +289,16 @@ export function Gallery() {
                             draggable="false"
                           />
                         </div>
-                        <div className="mt-4 flex justify-between items-center px-2">
+                        <div className="mt-3.5 flex justify-between items-center px-1">
                            {/* Decorative heart, doesn't do anything on drag */}
                            <Heart className={`w-5 h-5 md:w-6 md:h-6 text-[#ff007f] transition-colors ${isTop ? 'fill-[#ff007f]/20' : 'fill-transparent'}`} />
                            
-                           <span className="font-sans text-[10px] md:text-xs text-gray-500 tracking-[0.2em] font-medium uppercase pointer-events-none">
+                           <span className="font-sans text-[9px] md:text-[10px] text-neutral-500 tracking-[0.2em] font-black uppercase pointer-events-none">
                              {isTop ? 'Desliza →' : ''}
                            </span>
                            
                            <ImageIcon 
-                              className={`w-5 h-5 md:w-6 md:h-6 transition-colors ${isTop ? 'text-white/50 hover:text-white cursor-pointer pointer-events-auto' : 'text-white/20'}`} 
+                              className={`w-5 h-5 md:w-6 md:h-6 transition-colors ${isTop ? 'text-neutral-500 hover:text-neutral-900 cursor-pointer pointer-events-auto' : 'text-neutral-300'}`} 
                               onClick={(e) => { 
                                 if(isTop) {
                                   e.stopPropagation();
@@ -358,7 +375,7 @@ export function Gallery() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+          </AnimatePresence>
     </section>
   );
 }

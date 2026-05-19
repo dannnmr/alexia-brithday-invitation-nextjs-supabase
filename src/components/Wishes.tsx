@@ -176,6 +176,8 @@ export function Wishes() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 mt-2">
               <div className="relative group">
                 <input
+                  id="wish-name"
+                  name="wish-name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -183,10 +185,13 @@ export function Wishes() {
                   className="w-full bg-transparent border-b-2 border-[#ff007f]/20 pb-1.5 focus:outline-none focus:border-[#ff007f] transition-colors font-sans text-sm md:text-base text-[#e4e4e7] placeholder-[#a1a1aa]/30 uppercase tracking-widest"
                   required
                   disabled={isSubmitting}
+                  autoComplete="name"
                 />
               </div>
               <div className="relative group w-full">
                 <textarea
+                  id="wish-message"
+                  name="wish-message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder={`Querida ${siteConfig.client.name}...`}
@@ -194,6 +199,7 @@ export function Wishes() {
                   className="w-full bg-transparent border-b-2 border-[#ff007f]/20 pb-1.5 focus:outline-none focus:border-[#ff007f] transition-colors font-script text-3xl text-[#ffffff] focus:text-[#e4e4e7] placeholder-[#a1a1aa]/30 resize-none leading-relaxed"
                   required
                   disabled={isSubmitting}
+                  autoComplete="off"
                 />
                 {/* Lined paper effect on textarea */}
                 <div className="absolute top-0 left-0 w-full h-[85%] pointer-events-none" style={{ backgroundImage: 'linear-gradient(transparent 95%, rgba(214,25,88,0.1) 100%)', backgroundSize: '100% 2.8rem' }}></div>
