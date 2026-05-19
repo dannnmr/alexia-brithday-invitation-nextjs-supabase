@@ -97,7 +97,7 @@ export function Gifts() {
                        {/* Opción 1 */}
                        <div className="flex flex-col items-center group">
                          <div className="w-14 h-14 relative mb-3 transition-transform duration-500 group-hover:-translate-y-1 bg-black/50 rounded-full p-3 border border-white/10 shadow-[0_0_15px_rgba(255,0,127,0.15)]">
-                           <Image src="/images/decorativas/regalo2.png" alt="Ropa" fill className="object-contain p-2 opacity-90 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]" />
+                           <Image src="/images/decorativas/ROPA2.png" alt="Ropa" fill className="object-contain p-2 opacity-90 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]" />
                          </div>
                          <h5 className="font-sans text-[10px] md:text-xs text-gray-200 font-bold tracking-widest mb-1 uppercase">Ropa</h5>
                          <p className="font-sans text-[8px] text-gray-500 tracking-[0.2em] uppercase">Talla XS</p>

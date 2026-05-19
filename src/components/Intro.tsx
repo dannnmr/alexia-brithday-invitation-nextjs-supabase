@@ -188,7 +188,7 @@ export function Intro() {
                 whileHover={{ scale: 1.08, rotate: 3 }}
                 whileTap={{ scale: 0.92 }}
                 exit={{ scale: 1.8, opacity: 0 }}
-                className="absolute z-20 w-72 h-72 md:w-72 md:h-72 lg:w-80 lg:h-80 cursor-pointer drop-shadow-2xl flex items-center justify-center"
+                className="absolute z-20 w-80 h-80 md:w-96 md:h-96 lg:w-100 lg:h-100 cursor-pointer drop-shadow-2xl flex items-center justify-center"
               >
                 <Image
                   src="/images/invitation/logofinal.png"
