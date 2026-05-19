@@ -85,6 +85,7 @@ export function Music() {
           <motion.div 
             animate={{ rotate: 360 }}
             transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+            style={{ willChange: "transform" }}
             className="relative w-22 h-22 md:w-26 md:h-26 rounded-full bg-neutral-950 border-[5px] border-neutral-900 flex items-center justify-center shadow-2xl before:absolute before:inset-3 before:rounded-full before:border before:border-neutral-800/20 after:absolute after:inset-6 before:pointer-events-none after:pointer-events-none z-10"
           >
             {/* Grooves del vinilo (brillo radial) */}
@@ -181,13 +182,14 @@ export function Music() {
                 {visualizerBars.map((_, i) => (
                   <motion.div
                     key={i}
-                    className="w-[2.5px] bg-[#ff007f]/20 rounded-full"
+                    className="w-[2.5px] h-4 bg-[#ff007f]/20 rounded-full origin-bottom"
+                    style={{ willChange: "transform" }}
                     animate={{
-                      height: isSubmitting 
-                        ? [2, 16, 2] 
+                      scaleY: isSubmitting 
+                        ? [0.125, 1, 0.125] 
                         : isSuccess 
-                        ? [6, 6, 6] 
-                         : [3, Math.floor(Math.random() * 11) + 3, 3],
+                        ? [0.375, 0.375, 0.375] 
+                        : [0.1875, (Math.floor(Math.random() * 11) + 3) / 16, 0.1875],
                       backgroundColor: isSuccess ? "#22c55e" : "#ff007f"
                     }}
                     transition={{

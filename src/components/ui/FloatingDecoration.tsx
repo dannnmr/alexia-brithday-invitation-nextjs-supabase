@@ -70,6 +70,7 @@ export function FloatingDecoration({
       whileInView="whileInView"
       viewport={{ once: true }}
       className={cn("absolute pointer-events-none z-0", className)}
+      style={{ willChange: "transform, opacity", ...props.style }}
       {...props}
     >
       <Image 

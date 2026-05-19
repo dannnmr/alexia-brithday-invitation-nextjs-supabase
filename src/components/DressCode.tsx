@@ -20,8 +20,8 @@ type Sparkle = {
   driftY: number;
 };
 
-function generateSparkles(): Sparkle[] {
-  return Array.from({ length: 30 }, (_, i) => ({
+function generateSparkles(count: number): Sparkle[] {
+  return Array.from({ length: count }, (_, i) => ({
     id: i,
     top: `${Math.random() * 100}%`,
     left: `${Math.random() * 100}%`,
@@ -39,7 +39,8 @@ export function DressCode() {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
 
   useEffect(() => {
-    setSparkles(generateSparkles());
+    const isMobile = window.innerWidth < 768;
+    setSparkles(generateSparkles(isMobile ? 12 : 30));
   }, []);
 
   return (
@@ -140,6 +141,7 @@ export function DressCode() {
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                      style={{ willChange: "transform" }}
                       className="absolute w-[180px] h-[180px] md:w-[250px] md:h-[250px] rounded-full border border-dashed border-[#ff007f]/20 pointer-events-none"
                     />
                     <motion.div 

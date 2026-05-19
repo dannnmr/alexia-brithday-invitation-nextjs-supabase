@@ -17,8 +17,8 @@ type Sparkle = {
   delay: number;
 };
 
-function generateSparkles(): Sparkle[] {
-  return Array.from({ length: 35 }, (_, i) => ({
+function generateSparkles(count: number): Sparkle[] {
+  return Array.from({ length: count }, (_, i) => ({
     id: i,
     top: `${Math.random() * 100}%`,
     left: `${Math.random() * 100}%`,
@@ -33,7 +33,8 @@ export function Itinerary() {
   // Generado en el cliente para evitar hydration mismatch con Math.random()
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
   useEffect(() => {
-    setSparkles(generateSparkles());
+    const isMobile = window.innerWidth < 768;
+    setSparkles(generateSparkles(isMobile ? 12 : 35));
   }, []);
 
   return (

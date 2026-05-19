@@ -142,6 +142,7 @@ export function Location() {
                        <motion.div
                          animate={{ opacity: [0.4, 1, 0.4] }}
                          transition={{ duration: 2, repeat: Infinity }}
+                         style={{ willChange: "opacity" }}
                          className="w-1.5 h-1.5 rounded-full bg-[#ff007f]"
                        />
                        <span className="font-sans text-[8px] md:text-[9px] text-white/25 tracking-[0.45em] uppercase">
@@ -221,6 +222,7 @@ export function Location() {
                  <motion.svg 
                    animate={{ rotate: 360 }} 
                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                   style={{ willChange: "transform" }}
                    className="absolute inset-0 w-full h-full text-[#ffffff] opacity-70 group-hover:opacity-100 transition-opacity" 
                    viewBox="0 0 100 100"
                  >

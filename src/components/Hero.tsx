@@ -60,7 +60,8 @@ export function Hero() {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
 
   useEffect(() => {
-    setSparkles(generateSparkles(80));
+    const isMobile = window.innerWidth < 768;
+    setSparkles(generateSparkles(isMobile ? 25 : 80));
   }, []);
 
   return (
@@ -166,10 +167,20 @@ export function Hero() {
               </div>
 
               {/* Bola Disco Individual en Movimiento */}
-              <motion.div animate={{ rotate: [-2, 2, -2] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[3%] right-32 md:right-12 w-28 h-44 md:w-44 md:h-64 lg:w-52 lg:h-72 origin-top z-10 pointer-events-none">
+              <motion.div 
+                animate={{ rotate: [-2, 2, -2] }} 
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} 
+                style={{ willChange: "transform" }}
+                className="absolute top-[3%] right-32 md:right-12 w-28 h-44 md:w-44 md:h-64 lg:w-52 lg:h-72 origin-top z-10 pointer-events-none"
+              >
                 <Image src="/images/decorativas/boladisco2.png" alt="Bola Disco" fill className="object-contain object-top drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]" />
               </motion.div>
-              <motion.div animate={{ rotate: [-2, 2, -2] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[6%] left-[-12%] md:left-28 w-32 h-32 md:w-44 md:h-64 lg:w-52 lg:h-72 origin-top z-10 pointer-events-none">
+              <motion.div 
+                animate={{ rotate: [-2, 2, -2] }} 
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} 
+                style={{ willChange: "transform" }}
+                className="absolute top-[6%] left-[-12%] md:left-28 w-32 h-32 md:w-44 md:h-64 lg:w-52 lg:h-72 origin-top z-10 pointer-events-none"
+              >
                 <Image src="/images/decorativas/boladisco2.png" alt="Bola Disco" fill className="object-contain object-top drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]" />
               </motion.div>
 
@@ -324,7 +335,12 @@ export function Hero() {
               </div>
 
               {/* Bola Disco en Movimiento */}
-              <motion.div animate={{ rotate: [-3, 3, -3] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[3%] right-32 md:right-12 w-28 h-44 md:w-44 md:h-64 lg:w-52 lg:h-72 origin-top z-10 pointer-events-none">
+              <motion.div 
+                animate={{ rotate: [-3, 3, -3] }} 
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} 
+                style={{ willChange: "transform" }}
+                className="absolute top-[3%] right-32 md:right-12 w-28 h-44 md:w-44 md:h-64 lg:w-52 lg:h-72 origin-top z-10 pointer-events-none"
+              >
                 <Image src="/images/decorativas/boladisco2.png" alt="Bola Disco" fill className="object-contain object-top drop-shadow-[0_0_25px_rgba(255,0,127,0.3)]" />
               </motion.div>
 
@@ -485,6 +501,7 @@ export function Hero() {
               <motion.div 
                 animate={{ x: [0, 4, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                style={{ willChange: "transform" }}
                 className="absolute bottom-[-5%] right-[20%] w-32 h-32 md:w-40 md:h-30 z-20 pointer-events-none select-none drop-shadow-[0_6px_12px_rgba(0,0,0,0.5)]"
               >
                 <Image src="/images/decorativas/taxi2.png" alt="Taxi en puente" fill className="object-contain" />
@@ -644,21 +661,21 @@ export function Hero() {
 
               {/* Varias bolas de disco colgando a diferentes alturas y tamaños (Techo completo denso de 15 bolas) */}
               {[
-                { left: "2%", top: "-12%", size: "w-16 h-28 md:w-24 md:h-36", duration: 5.2, delay: 0.2, rotateRange: [-2.5, 2.5], opacity: 0.6, z: 15 },
-                { left: "8%", top: "-5%", size: "w-20 h-32 md:w-28 md:h-44", duration: 6.8, delay: 0.8, rotateRange: [2.0, -2.0], opacity: 0.8, z: 20 },
-                { left: "15%", top: "-14%", size: "w-14 h-24 md:w-18 md:h-28", duration: 4.8, delay: 1.1, rotateRange: [-1.5, 1.5], opacity: 0.5, z: 12 },
-                { left: "20%", top: "-3%", size: "w-26 h-42 md:w-34 md:h-52", duration: 6.0, delay: 0.5, rotateRange: [-3, 3], opacity: 0.9, z: 25 },
-                { left: "28%", top: "-9%", size: "w-18 h-30 md:w-24 md:h-38", duration: 5.5, delay: 1.4, rotateRange: [2.5, -2.5], opacity: 0.7, z: 15 },
-                { left: "34%", top: "-4%", size: "w-22 h-36 md:w-28 md:h-44", duration: 5.8, delay: 0.3, rotateRange: [-2, 2], opacity: 0.85, z: 20 },
-                { left: "42%", top: "-11%", size: "w-16 h-28 md:w-20 md:h-32", duration: 5.0, delay: 0.9, rotateRange: [1.8, -1.8], opacity: 0.6, z: 15 },
-                { left: "48%", top: "-2%", size: "w-28 h-46 md:w-38 md:h-58", duration: 6.2, delay: 0.0, rotateRange: [-3.5, 3.5], opacity: 0.95, z: 30 },
-                { left: "56%", top: "-8%", size: "w-18 h-30 md:w-24 md:h-38", duration: 5.4, delay: 0.7, rotateRange: [2.2, -2.2], opacity: 0.75, z: 15 },
-                { left: "62%", top: "-4%", size: "w-24 h-40 md:w-32 md:h-48", duration: 6.5, delay: 1.2, rotateRange: [-3, 3], opacity: 0.9, z: 25 },
-                { left: "70%", top: "-13%", size: "w-14 h-24 md:w-18 md:h-28", duration: 4.6, delay: 0.4, rotateRange: [-2, 2], opacity: 0.55, z: 12 },
-                { left: "76%", top: "-5%", size: "w-20 h-32 md:w-26 md:h-42", duration: 5.9, delay: 1.0, rotateRange: [2.5, -2.5], opacity: 0.8, z: 20 },
-                { left: "82%", top: "-9%", size: "w-16 h-28 md:w-22 md:h-34", duration: 6.3, delay: 0.1, rotateRange: [-1.8, 1.8], opacity: 0.65, z: 15 },
-                { left: "88%", top: "-3%", size: "w-26 h-42 md:w-32 md:h-50", duration: 5.6, delay: 1.5, rotateRange: [3, -3], opacity: 0.9, z: 25 },
-                { left: "95%", top: "-10%", size: "w-16 h-28 md:w-22 md:h-34", duration: 5.2, delay: 0.6, rotateRange: [-2.5, 2.5], opacity: 0.7, z: 15 },
+                { left: "2%", top: "-12%", size: "w-16 h-28 md:w-24 md:h-36", duration: 5.2, delay: 0.2, rotateRange: [-2.5, 2.5], opacity: 0.6, z: 15, mobile: true },
+                { left: "8%", top: "-5%", size: "w-20 h-32 md:w-28 md:h-44", duration: 6.8, delay: 0.8, rotateRange: [2.0, -2.0], opacity: 0.8, z: 20, mobile: false },
+                { left: "15%", top: "-14%", size: "w-14 h-24 md:w-18 md:h-28", duration: 4.8, delay: 1.1, rotateRange: [-1.5, 1.5], opacity: 0.5, z: 12, mobile: false },
+                { left: "20%", top: "-3%", size: "w-26 h-42 md:w-34 md:h-52", duration: 6.0, delay: 0.5, rotateRange: [-3, 3], opacity: 0.9, z: 25, mobile: true },
+                { left: "28%", top: "-9%", size: "w-18 h-30 md:w-24 md:h-38", duration: 5.5, delay: 1.4, rotateRange: [2.5, -2.5], opacity: 0.7, z: 15, mobile: false },
+                { left: "34%", top: "-4%", size: "w-22 h-36 md:w-28 md:h-44", duration: 5.8, delay: 0.3, rotateRange: [-2, 2], opacity: 0.85, z: 20, mobile: false },
+                { left: "42%", top: "-11%", size: "w-16 h-28 md:w-20 md:h-32", duration: 5.0, delay: 0.9, rotateRange: [1.8, -1.8], opacity: 0.6, z: 15, mobile: false },
+                { left: "48%", top: "-2%", size: "w-28 h-46 md:w-38 md:h-58", duration: 6.2, delay: 0.0, rotateRange: [-3.5, 3.5], opacity: 0.95, z: 30, mobile: true },
+                { left: "56%", top: "-8%", size: "w-18 h-30 md:w-24 md:h-38", duration: 5.4, delay: 0.7, rotateRange: [2.2, -2.2], opacity: 0.75, z: 15, mobile: false },
+                { left: "62%", top: "-4%", size: "w-24 h-40 md:w-32 md:h-48", duration: 6.5, delay: 1.2, rotateRange: [-3, 3], opacity: 0.9, z: 25, mobile: false },
+                { left: "70%", top: "-13%", size: "w-14 h-24 md:w-18 md:h-28", duration: 4.6, delay: 0.4, rotateRange: [-2, 2], opacity: 0.55, z: 12, mobile: false },
+                { left: "76%", top: "-5%", size: "w-20 h-32 md:w-26 md:h-42", duration: 5.9, delay: 1.0, rotateRange: [2.5, -2.5], opacity: 0.8, z: 20, mobile: false },
+                { left: "82%", top: "-9%", size: "w-16 h-28 md:w-22 md:h-34", duration: 6.3, delay: 0.1, rotateRange: [-1.8, 1.8], opacity: 0.65, z: 15, mobile: false },
+                { left: "88%", top: "-3%", size: "w-26 h-42 md:w-32 md:h-50", duration: 5.6, delay: 1.5, rotateRange: [3, -3], opacity: 0.9, z: 25, mobile: true },
+                { left: "95%", top: "-10%", size: "w-16 h-28 md:w-22 md:h-34", duration: 5.2, delay: 0.6, rotateRange: [-2.5, 2.5], opacity: 0.7, z: 15, mobile: true },
               ].map((ball, idx) => (
                 <motion.div
                   key={idx}
@@ -667,17 +684,18 @@ export function Hero() {
                     y: [0, -3, 0] 
                   }}
                   transition={{ duration: ball.duration, repeat: Infinity, ease: "easeInOut", delay: ball.delay }}
-                  className="absolute origin-top pointer-events-none select-none"
+                  className={`absolute origin-top pointer-events-none select-none ${!ball.mobile ? "hidden md:block" : ""}`}
                   style={{
                     top: ball.top,
                     left: ball.left,
                     opacity: ball.opacity,
                     zIndex: ball.z,
+                    willChange: "transform",
                   }}
                 >
                   <div className={`relative ${ball.size}`}>
                     <Image 
-                      src="/images/decorativas/boladisco2.png" 
+                       src="/images/decorativas/boladisco2.png" 
                       alt="Disco ball" 
                       fill 
                       className="object-contain drop-shadow-[0_10px_20px_rgba(255,0,127,0.2)]" 
