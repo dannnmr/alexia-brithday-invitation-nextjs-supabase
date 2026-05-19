@@ -2,93 +2,17 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { SparkleField } from "./ui/SparkleField";
 import { siteConfig } from "../config/invitation";
 import { SectionHeader } from "./ui/SectionHeader";
 import { AnimatedSection } from "./ui/AnimatedSection";
 
-type Sparkle = {
-  id: number;
-  top: string;
-  left: string;
-  color: string;
-  size: number;
-  duration: number;
-  delay: number;
-};
-
-function generateSparkles(count: number): Sparkle[] {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    color: i % 7 === 0 ? "rgba(255,0,127,0.5)" : "rgba(220,220,240,0.55)",
-    size: Math.random() * 3 + 2,
-    duration: Math.random() * 3 + 4,
-    delay: Math.random() * 6,
-  }));
-}
-
 export function Itinerary() {
-  // Generado en el cliente para evitar hydration mismatch con Math.random()
-  const [sparkles, setSparkles] = useState<Sparkle[]>([]);
-  useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    setSparkles(generateSparkles(isMobile ? 12 : 35));
-  }, []);
 
   return (
     <section className="relative py-10 px-6 flex flex-col items-center overflow-hidden" style={{ backgroundColor: '#050505' }}>
       
-      {/* === BRILLOS ANIMADOS (Destellos de Bola de Disco) === */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {sparkles.map((s) => (
-          <motion.svg
-            key={s.id}
-            viewBox="0 0 20 20"
-            className="absolute"
-            style={{
-              top: s.top,
-              left: s.left,
-              width: `${s.size * 5}px`,
-              height: `${s.size * 5}px`,
-              overflow: "visible",
-              filter: `drop-shadow(0 0 ${s.size}px ${s.color})`,
-            }}
-            animate={{
-              opacity: [0, 0.95, 0],
-              scale: [0.4, 1, 0.4],
-            }}
-            transition={{
-              duration: s.duration,
-              repeat: Infinity,
-              delay: s.delay,
-              ease: "easeInOut",
-            }}
-          >
-            <defs>
-              {/* Gradiente radial: brillante en el centro, transparente en las puntas */}
-              <radialGradient id={`sg-${s.id}`} cx="50%" cy="50%" r="50%">
-                <stop offset="0%"   stopColor={s.color} stopOpacity="1" />
-                <stop offset="45%"  stopColor={s.color} stopOpacity="0.5" />
-                <stop offset="100%" stopColor={s.color} stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            {/* Rayo vertical (más largo y fino) */}
-            <ellipse cx="20" cy="20" rx="1.2" ry="20" fill={`url(#sg-${s.id})`} />
-            {/* Rayo horizontal (igual de largo) */}
-            <ellipse cx="20" cy="20" rx="20" ry="1.2" fill={`url(#sg-${s.id})`} />
-            {/* Rayos diagonales (más cortos y tenues para dar volumen) */}
-            <g transform="rotate(45 20 20)">
-              <ellipse cx="20" cy="20" rx="0.7" ry="13" fill={`url(#sg-${s.id})`} opacity="0.45" />
-              <ellipse cx="20" cy="20" rx="13" ry="0.7" fill={`url(#sg-${s.id})`} opacity="0.45" />
-            </g>
-            {/* Punto central brillante */}
-            <circle cx="20" cy="20" r="2.2" fill={s.color} opacity="0.95" />
-          </motion.svg>
-        ))}
-      </div>
-      {/* Viñeta de borde para que los brillos se suavicen */}
+      <SparkleField mobileCount={8} desktopCount={22} />
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#050505_90%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl w-full flex flex-col items-center">

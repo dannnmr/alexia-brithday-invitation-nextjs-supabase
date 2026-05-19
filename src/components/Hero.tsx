@@ -2,35 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SparkleField } from "./ui/SparkleField";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { siteConfig } from "../config/invitation";
-
-type Sparkle = {
-  id: number;
-  top: string;
-  left: string;
-  color: string;
-  size: number;
-  duration: number;
-  delay: number;
-  driftX: number;
-  driftY: number;
-};
-
-function generateSparkles(count: number): Sparkle[] {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    color: i % 5 === 0 ? "rgba(255,0,127,0.6)" : "rgba(220,220,240,0.5)",
-    size: Math.random() * 3 + 2,
-    duration: Math.random() * 3 + 4,
-    delay: Math.random() * 8,
-    driftX: (Math.random() - 0.5) * 60,
-    driftY: (Math.random() - 0.5) * 60,
-  }));
-}
 
 type BokehParticle = {
   id: number;
@@ -57,12 +32,6 @@ const BOKEH_PARTICLES: BokehParticle[] = [
 
 export function Hero() {
   const [heroStyle, setHeroStyle] = useState<"original" | "glitter_night" | "times_square_glow" | "studio_54_classic">("original");
-  const [sparkles, setSparkles] = useState<Sparkle[]>([]);
-
-  useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    setSparkles(generateSparkles(isMobile ? 25 : 80));
-  }, []);
 
   return (
     <section className="relative min-h-svh w-full flex flex-col items-center justify-center overflow-hidden bg-black">
@@ -91,6 +60,9 @@ export function Hero() {
         ))}
       </div>
 
+      {/* Sparkles compartidos — CSS animation, no Framer Motion */}
+      <SparkleField mobileCount={10} desktopCount={30} />
+
       <AnimatePresence mode="wait">
         <motion.div
           key={heroStyle}
@@ -107,51 +79,6 @@ export function Hero() {
           {heroStyle === "original" && (
             <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center">
               
-              {/* Brillos animados */}
-              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                {sparkles.map((s) => (
-                  <motion.svg
-                    key={s.id}
-                    viewBox="0 0 20 20"
-                    className="absolute"
-                    style={{
-                      top: s.top,
-                      left: s.left,
-                      width: `${s.size * 5}px`,
-                      height: `${s.size * 5}px`,
-                      overflow: "visible",
-                      filter: `drop-shadow(0 0 ${s.size}px ${s.color})`,
-                    }}
-                    animate={{
-                      opacity: [0, 0.95, 0],
-                      scale: [0.4, 1, 0.4],
-                      x: [0, s.driftX, 0],
-                      y: [0, s.driftY, 0],
-                    }}
-                    transition={{
-                      duration: s.duration,
-                      repeat: Infinity,
-                      delay: s.delay,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    <defs>
-                      <radialGradient id={`hero-sg-${s.id}`} cx="50%" cy="50%" r="50%">
-                        <stop offset="0%"   stopColor={s.color} stopOpacity="1" />
-                        <stop offset="45%"  stopColor={s.color} stopOpacity="0.5" />
-                        <stop offset="100%" stopColor={s.color} stopOpacity="0" />
-                      </radialGradient>
-                    </defs>
-                    <ellipse cx="20" cy="20" rx="1.2" ry="20" fill={`url(#hero-sg-${s.id})`} />
-                    <ellipse cx="20" cy="20" rx="20" ry="1.2" fill={`url(#hero-sg-${s.id})`} />
-                    <g transform="rotate(45 20 20)">
-                      <ellipse cx="20" cy="20" rx="0.7" ry="13" fill={`url(#hero-sg-${s.id})`} opacity="0.45" />
-                      <ellipse cx="20" cy="20" rx="13" ry="0.7" fill={`url(#hero-sg-${s.id})`} opacity="0.45" />
-                    </g>
-                    <circle cx="20" cy="20" r="2.2" fill={s.color} opacity="0.95" />
-                  </motion.svg>
-                ))}
-              </div>
               <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#000000_90%)] pointer-events-none" />
 
               {/* Bolas de disco decorativas colgando */}
@@ -170,7 +97,6 @@ export function Hero() {
               <motion.div 
                 animate={{ rotate: [-2, 2, -2] }} 
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} 
-                style={{ willChange: "transform" }}
                 className="absolute top-[3%] right-32 md:right-12 w-28 h-44 md:w-44 md:h-64 lg:w-52 lg:h-72 origin-top z-10 pointer-events-none"
               >
                 <Image src="/images/decorativas/boladisco2.png" alt="Bola Disco" fill className="object-contain object-top drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]" />
@@ -178,7 +104,6 @@ export function Hero() {
               <motion.div 
                 animate={{ rotate: [-2, 2, -2] }} 
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} 
-                style={{ willChange: "transform" }}
                 className="absolute top-[6%] left-[-12%] md:left-28 w-32 h-32 md:w-44 md:h-64 lg:w-52 lg:h-72 origin-top z-10 pointer-events-none"
               >
                 <Image src="/images/decorativas/boladisco2.png" alt="Bola Disco" fill className="object-contain object-top drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]" />
@@ -271,51 +196,6 @@ export function Hero() {
           {heroStyle === "glitter_night" && (
             <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center">
               
-              {/* Brillos animados incrementados (delicados y pequeños) */}
-              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                {sparkles.map((s) => (
-                  <motion.svg
-                    key={s.id}
-                    viewBox="0 0 20 20"
-                    className="absolute"
-                    style={{
-                      top: s.top,
-                      left: s.left,
-                      width: `${s.size * 3.5}px`,
-                      height: `${s.size * 3.5}px`,
-                      overflow: "visible",
-                      filter: `drop-shadow(0 0 ${s.size}px ${s.color})`,
-                    }}
-                    animate={{
-                      opacity: [0, 1, 0],
-                      scale: [0.4, 1.2, 0.4],
-                      x: [0, s.driftX * 0.8, 0],
-                      y: [0, s.driftY * 0.8, 0],
-                    }}
-                    transition={{
-                      duration: s.duration,
-                      repeat: Infinity,
-                      delay: s.delay,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    <defs>
-                      <radialGradient id={`glitter-sg-${s.id}`} cx="50%" cy="50%" r="50%">
-                        <stop offset="0%"   stopColor={s.color} stopOpacity="1" />
-                        <stop offset="45%"  stopColor={s.color} stopOpacity="0.5" />
-                        <stop offset="100%" stopColor={s.color} stopOpacity="0" />
-                      </radialGradient>
-                    </defs>
-                    <ellipse cx="20" cy="20" rx="1.0" ry="20" fill={`url(#glitter-sg-${s.id})`} />
-                    <ellipse cx="20" cy="20" rx="20" ry="1.0" fill={`url(#glitter-sg-${s.id})`} />
-                    <g transform="rotate(45 20 20)">
-                      <ellipse cx="20" cy="20" rx="0.5" ry="12" fill={`url(#glitter-sg-${s.id})`} opacity="0.45" />
-                      <ellipse cx="20" cy="20" rx="12" ry="0.5" fill={`url(#glitter-sg-${s.id})`} opacity="0.45" />
-                    </g>
-                    <circle cx="20" cy="20" r="1.8" fill={s.color} opacity="0.95" />
-                  </motion.svg>
-                ))}
-              </div>
               <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#000000_90%)] pointer-events-none" />
 
               {/* Haces de luz giratorios de bola de disco en fucsia/plata */}
@@ -338,7 +218,6 @@ export function Hero() {
               <motion.div 
                 animate={{ rotate: [-3, 3, -3] }} 
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} 
-                style={{ willChange: "transform" }}
                 className="absolute top-[3%] right-32 md:right-12 w-28 h-44 md:w-44 md:h-64 lg:w-52 lg:h-72 origin-top z-10 pointer-events-none"
               >
                 <Image src="/images/decorativas/boladisco2.png" alt="Bola Disco" fill className="object-contain object-top drop-shadow-[0_0_25px_rgba(255,0,127,0.3)]" />
@@ -455,23 +334,6 @@ export function Hero() {
           {heroStyle === "times_square_glow" && (
             <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center">
               
-              {/* Brillos con caída vertical simulando luces de edificios de Times Square */}
-              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                {sparkles.map((s) => (
-                  <motion.div
-                    key={s.id}
-                    className="absolute rounded-full"
-                    style={{
-                      top: s.top, left: s.left,
-                      width: `${s.size}px`, height: `${s.size * 2}px`,
-                      backgroundColor: s.color,
-                      opacity: 0.45,
-                    }}
-                    animate={{ y: [0, s.driftY * 1.5, 0], opacity: [0.1, 0.8, 0.1] }}
-                    transition={{ duration: s.duration + 1, repeat: Infinity, ease: "linear" }}
-                  />
-                ))}
-              </div>
               <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,#000000_90%)] pointer-events-none" />
 
               {/* Bolas de disco decorativas colgando */}
@@ -501,7 +363,6 @@ export function Hero() {
               <motion.div 
                 animate={{ x: [0, 4, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                style={{ willChange: "transform" }}
                 className="absolute bottom-[-5%] right-[20%] w-32 h-32 md:w-40 md:h-30 z-20 pointer-events-none select-none drop-shadow-[0_6px_12px_rgba(0,0,0,0.5)]"
               >
                 <Image src="/images/decorativas/taxi2.png" alt="Taxi en puente" fill className="object-contain" />
@@ -560,29 +421,6 @@ export function Hero() {
           {heroStyle === "studio_54_classic" && (
             <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center">
               
-              {/* Brillos animados en forma de destellos de 4 puntas */}
-              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                {sparkles.map((s) => (
-                  <motion.svg
-                    key={s.id}
-                    viewBox="0 0 40 40"
-                    className="absolute"
-                    style={{
-                      top: s.top, left: s.left,
-                      width: `${s.size * 3.5}px`, height: `${s.size * 3.5}px`,
-                      overflow: "visible",
-                      filter: "drop-shadow(0 0 5px rgba(255, 0, 127, 0.5))",
-                    }}
-                    animate={{ opacity: [0, 0.9, 0], scale: [0.4, 1.2, 0.4], rotate: [0, 90] }}
-                    transition={{ duration: s.duration, repeat: Infinity, delay: s.delay, ease: "easeInOut" }}
-                  >
-                    <path
-                      d="M 20 0 Q 20 20 0 20 Q 20 20 20 40 Q 20 20 40 20 Q 20 20 20 0 Z"
-                      fill={s.color}
-                    />
-                  </motion.svg>
-                ))}
-              </div>
               {/* Partículas de Bokeh Fucsia flotantes (Luces flotantes de ambiente de club VIP) */}
               <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 {BOKEH_PARTICLES.map((p) => (
@@ -690,7 +528,6 @@ export function Hero() {
                     left: ball.left,
                     opacity: ball.opacity,
                     zIndex: ball.z,
-                    willChange: "transform",
                   }}
                 >
                   <div className={`relative ${ball.size}`}>

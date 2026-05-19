@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { SparkleField } from "./ui/SparkleField";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "../config/invitation";
 import { SectionHeader } from "./ui/SectionHeader";
@@ -8,40 +9,8 @@ import { AnimatedSection } from "./ui/AnimatedSection";
 import { Check, X, AlertCircle } from "lucide-react";
 import { FloatingDecoration } from "./ui/FloatingDecoration";
 
-type Sparkle = {
-  id: number;
-  top: string;
-  left: string;
-  color: string;
-  size: number;
-  duration: number;
-  delay: number;
-  driftX: number;
-  driftY: number;
-};
-
-function generateSparkles(count: number): Sparkle[] {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    color: i % 5 === 0 ? "rgba(255,0,127,0.3)" : "rgba(100,100,120,0.15)",
-    size: Math.random() * 2 + 1,
-    duration: Math.random() * 3 + 4,
-    delay: Math.random() * 8,
-    driftX: (Math.random() - 0.5) * 40,
-    driftY: (Math.random() - 0.5) * 40,
-  }));
-}
-
 export function DressCode() {
   const [styleType, setStyleType] = useState<"original" | "classic_white" | "badge" | "gallery" | "collage">("collage");
-  const [sparkles, setSparkles] = useState<Sparkle[]>([]);
-
-  useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    setSparkles(generateSparkles(isMobile ? 12 : 30));
-  }, []);
 
   return (
     <div className="relative w-full bg-[#050505] overflow-hidden">
@@ -98,28 +67,7 @@ export function DressCode() {
                 animationStyle="float"
               />
               
-              {/* Brillos animados de fondo */}
-              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                {sparkles.map((s) => (
-                  <motion.svg
-                    key={s.id}
-                    viewBox="0 0 20 20"
-                    className="absolute"
-                    style={{
-                      top: s.top, left: s.left,
-                      width: `${s.size * 5}px`, height: `${s.size * 5}px`,
-                      overflow: "visible",
-                      filter: `drop-shadow(0 0 ${s.size}px ${s.color})`,
-                    }}
-                    animate={{ opacity: [0, 0.9, 0], scale: [0.4, 1, 0.4], x: [0, s.driftX, 0], y: [0, s.driftY, 0] }}
-                    transition={{ duration: s.duration, repeat: Infinity, delay: s.delay, ease: "easeInOut" }}
-                  >
-                    <ellipse cx="20" cy="20" rx="1.2" ry="20" fill={s.color} />
-                    <ellipse cx="20" cy="20" rx="20" ry="1.2" fill={s.color} />
-                    <circle cx="20" cy="20" r="2.2" fill={s.color} opacity="0.95" />
-                  </motion.svg>
-                ))}
-              </div>
+              <SparkleField mobileCount={8} desktopCount={20} />
               <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#050505_85%)] pointer-events-none" />
 
               {/* Borde decorativo interior */}
@@ -204,25 +152,7 @@ export function DressCode() {
                 animationStyle="float"
               />
               
-              {/* Brillos animados sutiles en gris/fucsia */}
-              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                {sparkles.map((s) => (
-                  <motion.svg
-                    key={s.id}
-                    viewBox="0 0 20 20"
-                    className="absolute"
-                    style={{
-                      top: s.top, left: s.left,
-                      width: `${s.size * 5}px`, height: `${s.size * 5}px`,
-                      overflow: "visible",
-                    }}
-                    animate={{ opacity: [0, 0.6, 0], scale: [0.5, 1, 0.5], x: [0, s.driftX, 0], y: [0, s.driftY, 0] }}
-                    transition={{ duration: s.duration, repeat: Infinity, delay: s.delay, ease: "easeInOut" }}
-                  >
-                    <circle cx="20" cy="20" r="1.8" fill={s.color.includes("rgba(255,0,127") ? "#ff007f" : "#d1d5db"} opacity="0.8" />
-                  </motion.svg>
-                ))}
-              </div>
+              <SparkleField mobileCount={6} desktopCount={16} />
 
               {/* Borde decorativo interior gris */}
               <div className="absolute inset-4 md:inset-8 border border-gray-200 rounded-sm pointer-events-none z-0" />

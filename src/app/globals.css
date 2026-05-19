@@ -25,3 +25,44 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* CSS sparkle animation — replaces Framer Motion SVG sparkles for better performance */
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.3); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.sparkle-css {
+  position: absolute;
+  animation: sparkle-twinkle ease-in-out infinite;
+  animation-fill-mode: both;
+}
+
+.sparkle-css::before,
+.sparkle-css::after {
+  content: '';
+  position: absolute;
+  background: linear-gradient(to bottom, transparent, currentColor, transparent);
+  left: 50%;
+  top: 50%;
+  border-radius: 9999px;
+}
+
+.sparkle-css::before {
+  width: 2px;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 4px currentColor;
+}
+
+.sparkle-css::after {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, currentColor, transparent);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 4px currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkle-css { display: none !important; }
+}
