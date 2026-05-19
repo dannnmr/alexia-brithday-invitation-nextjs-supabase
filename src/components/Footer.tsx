@@ -35,6 +35,12 @@ export function Footer() {
         className="top-[20%] right-[10%] w-10 h-10 opacity-20 -rotate-[8deg] pointer-events-none z-0" 
         animationStyle="float" 
       />
+      <FloatingDecoration 
+        src="/images/decorativas/leopardo.png" 
+        alt="Leopardo Fondo" 
+        className="bottom-[-10%] right-[-8%] w-48 h-48 md:w-64 md:h-64 opacity-40 pointer-events-none z-0" 
+        animationStyle="float" 
+      />
 
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         
