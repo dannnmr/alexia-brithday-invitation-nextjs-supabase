@@ -35,14 +35,6 @@ export const metadata: Metadata = {
     description: `Te invito a celebrar la fiesta de 15 años de ${siteConfig.client.name}.`,
     url: "https://alexia-brithday-invitation-nextjs-s.vercel.app/",
     siteName: `Mis XV - ${siteConfig.client.name}`,
-    images: [
-      {
-        url: "https://alexia-brithday-invitation-nextjs-s.vercel.app/images/invitation/logofinal.png",
-        width: 1200,
-        height: 630,
-        alt: `Logo - Mis XV ${siteConfig.client.name}`,
-      },
-    ],
     locale: "es_ES",
     type: "website",
   },
@@ -50,7 +42,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `Mis XV - ${siteConfig.client.name}`,
     description: `Te invito a celebrar la fiesta de 15 años de ${siteConfig.client.name}.`,
-    images: ["https://alexia-brithday-invitation-nextjs-s.vercel.app/images/invitation/logofinal.png"],
   }
 };
 
