@@ -58,7 +58,7 @@ export function RSVP() {
     <section className="relative py-8 px-6 bg-[#0a0a0a] flex flex-col items-center overflow-hidden">
       
       {/* Fondo Superior / Arco VIP */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120vw] md:w-[800px] h-[250px] md:h-[300px] bg-gradient-to-b from-[#ff007f]/10 to-transparent rounded-b-[50%] z-0 " />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120vw] md:w-[800px] h-[250px] md:h-[300px] bg-linear-to-b from-[#ff007f]/10 to-transparent rounded-b-[50%] z-0 " />
       
       {/* Decoración VIP */}
       <FloatingDecoration 
@@ -135,7 +135,7 @@ export function RSVP() {
               subtitleClassName="text-[#ff007f] font-bold text-[10px] min-[380px]:text-[12px] tracking-[0.4em] min-[380px]:tracking-[0.5em] mb-1 min-[380px]:mb-2"
             />
             <div className="text-center mb-6 w-full -mt-4">
-              <p className="font-sans text-[9px] min-[380px]:text-[10px] md:text-xs text-gray-400 tracking-[0.1em] min-[380px]:tracking-[0.15em] font-light max-w-sm mx-auto uppercase leading-relaxed px-2 min-[380px]:px-4">
+              <p className="font-sans text-[9px] min-[380px]:text-[10px] md:text-xs text-gray-400 tracking-widest min-[380px]:tracking-[0.15em] font-light max-w-sm mx-auto uppercase leading-relaxed px-2 min-[380px]:px-4">
                 Por favor, confírmanos tu presencia antes del {siteConfig.event.rsvpDeadline}.
               </p>
             </div>
@@ -152,7 +152,7 @@ export function RSVP() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Ej. John Travolta"
+                  placeholder="Ej. Jennifer Hernandez"
                   className="w-full bg-transparent border-none focus:outline-none focus:ring-0 font-sans text-sm min-[380px]:text-base md:text-xl text-white placeholder-gray-600 tracking-wider"
                   disabled={isSubmitting}
                 />

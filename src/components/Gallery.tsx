@@ -145,8 +145,8 @@ export function Gallery() {
     <section className="relative py-8 md:py-16 px-6 bg-[#050505] flex flex-col items-center overflow-hidden">
       
       {/* Decorative Neon Lighting (Cyberpunk/Disco VIP) */}
-      <div className="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-gradient-to-tr from-[#ff007f]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
-      <div className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] bg-gradient-to-bl from-cyan-500/10 to-[#ff007f]/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+      <div className="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-linear-to-tr from-[#ff007f]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] bg-linear-to-bl from-cyan-500/10 to-[#ff007f]/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
       <div className="max-w-6xl w-full relative z-10 flex flex-col items-center">
         
@@ -330,7 +330,7 @@ export function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-[#050505]/95 backdrop-blur-xl flex justify-center items-center p-4 md:p-10"
+            className="fixed inset-0 z-100 bg-[#050505]/95 backdrop-blur-xl flex justify-center items-center p-4 md:p-10"
             onClick={() => setSelectedImage(null)}
           >
             <motion.button 

@@ -14,7 +14,7 @@ export function Passes() {
   return (
     <section className="relative w-full py-10 md:py-16 bg-[#050505] overflow-hidden flex flex-col items-center">
       {/* Fondo sutil */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-2 md:px-4 flex flex-col items-center gap-8 md:gap-12 relative z-10 w-full">
         {/* Header de sección */}
@@ -37,7 +37,7 @@ export function Passes() {
             <div className="flex-1 flex p-2 md:p-6 relative">
               
               {/* Código de barras vertical izquierdo */}
-              <div className="w-5 md:w-12 h-full flex flex-col justify-center items-center gap-[1px] md:gap-[1.5px] pr-2 md:pr-6 border-r md:border-r-2 border-black">
+              <div className="w-5 md:w-12 h-full flex flex-col justify-center items-center gap-px md:gap-[1.5px] pr-2 md:pr-6 border-r md:border-r-2 border-black">
                 {BARS.map((h, i) => (
                   <div key={i} className="bg-black w-full" style={{ height: `${h * 1.5}px` }} />
                 ))}
@@ -52,11 +52,14 @@ export function Passes() {
                     <h2 className="text-xl sm:text-2xl md:text-5xl lg:text-6xl font-serif font-black uppercase tracking-tight text-black leading-none">
                       VIP PASS
                     </h2>
-                    <Plane className="w-4 h-4 md:w-12 md:h-12 text-black rotate-[45deg]" strokeWidth={2.5} />
+                    <Plane className="w-4 h-4 md:w-12 md:h-12 text-black rotate-45" strokeWidth={2.5} />
                   </div>
-                  <h3 className="text-xs sm:text-sm md:text-2xl font-serif font-bold text-black tracking-wide">
-                    {siteConfig.passes.quantity} {siteConfig.passes.unitText}
-                  </h3>
+                  <div className="flex items-center gap-2 mt-1 md:mt-2">
+                    <span className="inline-flex items-center gap-1.5 bg-[#ff007f] text-white font-serif font-black uppercase tracking-widest text-[10px] sm:text-xs md:text-base px-2 py-0.5 md:px-4 md:py-1.5 rounded-full shadow-[0_0_12px_rgba(255,0,127,0.5)]">
+                      {siteConfig.passes.quantity} {siteConfig.passes.unitText}
+                    </span>
+                    <span className="font-sans text-[8px] md:text-xs text-black/50 uppercase tracking-widest">por invitación</span>
+                  </div>
                 </div>
 
                 {/* Grid de Datos */}
@@ -94,7 +97,7 @@ export function Passes() {
               <div className="absolute top-[-8px] md:top-[-12px] w-4 h-4 md:w-8 md:h-8 rounded-full bg-[#050505] z-10" />
               
               {/* Línea perforada punteada */}
-              <div className="h-full w-0 border-l-[2px] md:border-l-[3px] border-dotted border-gray-400/60 my-4 md:my-6" />
+              <div className="h-full w-0 border-l-2 md:border-l-[3px] border-dotted border-gray-400/60 my-4 md:my-6" />
               
               {/* Muesca inferior */}
               <div className="absolute bottom-[-8px] md:bottom-[-12px] w-4 h-4 md:w-8 md:h-8 rounded-full bg-[#050505] z-10" />
@@ -113,7 +116,7 @@ export function Passes() {
               </div>
 
               {/* Acento Amarillo (Simulando el Taxi) */}
-              <div className="absolute bottom-0 left-0 w-full h-1.5 md:h-4 bg-[#facc15]" />
+              <div className="absolute bottom-0 left-0 w-full h-1.5 md:h-4 bg-[#d11d80]" />
 
               {/* Texto Vertical "NY" */}
               <div className="absolute top-[-30px] md:top-4 right-1 md:right-6 z-10 flex h-[80%] items-center justify-center">

@@ -14,7 +14,7 @@ export function Gifts() {
     <section className="relative py-10 md:py-16 px-4 bg-[#050505] flex flex-col items-center overflow-hidden">
       
       {/* Fondo muy sutil */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl w-full flex flex-col items-center">
         
@@ -75,7 +75,7 @@ export function Gifts() {
                          <div className="w-14 h-14 relative mb-3 transition-transform duration-500 group-hover:-translate-y-1 bg-black/50 rounded-full p-3 border border-white/10 shadow-[0_0_15px_rgba(255,0,127,0.15)]">
                            <Image src="/images/decorativas/regalo2.png" alt="Ropa" fill className="object-contain p-2 opacity-90 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]" />
                          </div>
-                         <h5 className="font-sans text-[10px] md:text-xs text-gray-200 font-bold tracking-[0.1em] mb-1 uppercase">Ropa</h5>
+                         <h5 className="font-sans text-[10px] md:text-xs text-gray-200 font-bold tracking-widest mb-1 uppercase">Ropa</h5>
                          <p className="font-sans text-[8px] text-gray-500 tracking-[0.2em] uppercase">Talla XS</p>
                        </div>
 
@@ -84,7 +84,7 @@ export function Gifts() {
                          <div className="w-14 h-14 relative mb-3 transition-transform duration-500 group-hover:-translate-y-1 bg-black/50 rounded-full p-3 border border-white/10 shadow-[0_0_15px_rgba(255,0,127,0.15)]">
                            <Image src="/images/decorativas/perfume.png" alt="Perfume" fill className="object-contain p-2 opacity-90 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]" />
                          </div>
-                         <h5 className="font-sans text-[10px] md:text-xs text-gray-200 font-bold tracking-[0.1em] mb-1 uppercase">Perfumes</h5>
+                         <h5 className="font-sans text-[10px] md:text-xs text-gray-200 font-bold tracking-widest mb-1 uppercase">Perfumes</h5>
                          <p className="font-sans text-[8px] text-gray-500 tracking-[0.2em] uppercase">Dulces</p>
                        </div>
                        
@@ -93,16 +93,16 @@ export function Gifts() {
                          <div className="w-14 h-14 relative mb-3 transition-transform duration-500 group-hover:-translate-y-1 bg-black/50 rounded-full p-3 border border-white/10 shadow-[0_0_15px_rgba(255,0,127,0.15)]">
                            <Image src="/images/decorativas/lips.png" alt="Maquillaje" fill className="object-contain p-2 opacity-90 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]" />
                          </div>
-                         <h5 className="font-sans text-[10px] md:text-xs text-gray-200 font-bold tracking-[0.1em] mb-1 uppercase">Maquillaje</h5>
+                         <h5 className="font-sans text-[10px] md:text-xs text-gray-200 font-bold tracking-widest mb-1 uppercase">Maquillaje</h5>
                          <p className="font-sans text-[8px] text-gray-500 tracking-[0.2em] uppercase">Gloss, Rubor, etc</p>
                        </div>
 
                        {/* Opción 4 */}
                        <div className="flex flex-col items-center group">
                          <div className="w-14 h-14 relative mb-3 transition-transform duration-500 group-hover:-translate-y-1 bg-black/50 rounded-full p-3 border border-white/10 shadow-[0_0_15px_rgba(255,0,127,0.15)]">
-                           <Image src="/images/regalo/accesorios.png" alt="Accesorios" fill className="object-contain p-2 opacity-90 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]" />
+                           <Image src="/images/regalo/accesorios3.png" alt="Accesorios" fill className="object-contain p-2 opacity-90 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]" />
                          </div>
-                         <h5 className="font-sans text-[10px] md:text-xs text-gray-200 font-bold tracking-[0.1em] mb-1 uppercase">Accesorios dorados</h5>
+                         <h5 className="font-sans text-[10px] md:text-xs text-gray-200 font-bold tracking-widest mb-1 uppercase">Accesorios dorados</h5>
                          <p className="font-sans text-[8px] text-gray-500 tracking-[0.2em] uppercase">Collares, Lentes</p>
                        </div>
 

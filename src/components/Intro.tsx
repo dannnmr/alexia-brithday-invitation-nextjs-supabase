@@ -98,12 +98,12 @@ export function Intro() {
       </audio>
 
       {!isClosed && (
-        <div className="fixed inset-0 z-[100] w-screen h-[100vh] min-h-[100vh] flex items-center justify-center overflow-hidden pointer-events-auto">
+        <div className="fixed inset-0 z-100 w-screen h-screen min-h-screen flex items-center justify-center overflow-hidden pointer-events-auto">
           {/* Background Sobre Completo */}
           <AnimatePresence>
             {!isOpening && (
               <motion.div
-                className="absolute inset-0 w-full h-[100vh] min-h-[100vh] z-20 bg-black"
+                className="absolute inset-0 w-full h-screen min-h-screen z-20 bg-black"
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.1 }}
               >
@@ -121,7 +121,7 @@ export function Intro() {
 
           {/* Left Envelope */}
           <motion.div
-            className="absolute inset-0 w-full h-[100vh] min-h-[100vh] z-10"
+            className="absolute inset-0 w-full h-screen min-h-screen z-10"
             initial={{ x: 0 }}
             animate={{ x: isOpening ? "-100%" : 0 }}
             transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
@@ -138,7 +138,7 @@ export function Intro() {
 
           {/* Right Envelope */}
           <motion.div
-            className="absolute inset-0 w-full h-[100vh] min-h-[100vh] z-10"
+            className="absolute inset-0 w-full h-screen min-h-screen z-10"
             initial={{ x: 0 }}
             animate={{ x: isOpening ? "100%" : 0 }}
             transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
@@ -185,7 +185,7 @@ export function Intro() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={toggleAudio}
-          className="fixed bottom-6 right-6 z-[99] w-12 h-12 bg-[#0a0a0a]/40 backdrop-blur-md border border-white/60 rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(214,25,88,0.15)] text-[#ff007f] transition-colors hover:bg-[#0a0a0a]/60"
+          className="fixed bottom-6 right-6 z-99 w-12 h-12 bg-[#0a0a0a]/40 backdrop-blur-md border border-white/60 rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(214,25,88,0.15)] text-[#ff007f] transition-colors hover:bg-[#0a0a0a]/60"
           aria-label={isPlaying ? "Pausar música" : "Reproducir música"}
         >
           {isPlaying ? <Volume2 size={24} strokeWidth={1.5} /> : <VolumeX size={24} strokeWidth={1.5} />}

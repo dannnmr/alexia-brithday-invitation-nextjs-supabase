@@ -10,7 +10,7 @@ export function Footer() {
     <footer className="relative pt-10 pb-16 bg-[#000000] flex flex-col items-center justify-center overflow-hidden border-t border-white/10">
       
       {/* Sutil Grid de Fondo (Vibe de Club Nocturno/Pista de Luces) */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)] opacity-40 pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_at_center,black_30%,transparent_80%)] opacity-40 pointer-events-none z-0" />
       
       {/* Elementos Decorativos de Fondo con animación sutil */}
       <motion.div 
@@ -29,7 +29,7 @@ export function Footer() {
       </motion.div>
       
       {/* Resplandor central de neón fucsia profundo */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[200px] bg-gradient-to-t from-[#ff007f]/15 via-transparent to-transparent blur-[60px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[200px] bg-linear-to-t from-[#ff007f]/15 via-transparent to-transparent blur-[60px] pointer-events-none z-0"></div>
 
       {/* Bloque de Despedida Impactante */}
       <motion.div 
@@ -41,11 +41,11 @@ export function Footer() {
       >
         {/* Badge superior editorial */}
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-6 md:w-10 h-[1px] bg-gradient-to-l from-[#ff007f] to-transparent"></div>
+          <div className="w-6 md:w-10 h-px bg-linear-to-l from-[#ff007f] to-transparent"></div>
           <span className="font-sans text-[8px] md:text-[10px] text-white/90 tracking-[0.4em] uppercase font-semibold text-center drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
             Exclusive Invitation
           </span>
-          <div className="w-6 md:w-10 h-[1px] bg-gradient-to-r from-[#ff007f] to-transparent"></div>
+          <div className="w-6 md:w-10 h-px bg-linear-to-r from-[#ff007f] to-transparent"></div>
         </div>
 
         {/* Doble Capa Tipográfica: Vogue-Serif de Fondo + Pinyon Script de Frente */}
@@ -79,7 +79,7 @@ export function Footer() {
           className="group relative font-sans text-[9px] md:text-[10px] text-gray-400 hover:text-white tracking-[0.2em] uppercase font-bold transition-all duration-300 py-1"
         >
           <span className="relative z-10">Solicita tu web aquí: +591 68183484</span>
-          <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#ff007f] transition-all duration-300 group-hover:w-full group-hover:shadow-[0_0_8px_rgba(255,0,127,1)]" />
+          <span className="absolute bottom-0 left-0 w-0 h-px bg-[#ff007f] transition-all duration-300 group-hover:w-full group-hover:shadow-[0_0_8px_rgba(255,0,127,1)]" />
         </a>
       </div>
     </footer>

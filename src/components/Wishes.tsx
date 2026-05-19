@@ -171,7 +171,7 @@ export function Wishes() {
             className="w-full lg:w-1/2 bg-[#faf6f0] p-6 md:p-10 rounded-tl-[3rem] rounded-br-[3rem] shadow-[15px_15px_0px_rgba(214,25,88,0.1)] border border-white relative"
           >
             {/* Cinta Adhesiva Decorativa para el bloc de notas */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-[#0a0a0a]/40 block rotate-[-3deg] shadow-sm backdrop-blur-md border border-white/50"></div>
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-[#0a0a0a]/40 block -rotate-3 shadow-sm backdrop-blur-md border border-white/50"></div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 mt-2">
               <div className="relative group">
@@ -246,7 +246,7 @@ export function Wishes() {
                <div 
                  ref={scrollRef}
                  onScroll={handleScroll}
-                 className="flex w-full overflow-x-auto snap-x snap-mandatory gap-4 pb-4 pt-4 px-4 sm:px-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                 className="flex w-full overflow-x-auto snap-x snap-mandatory gap-4 pb-4 pt-4 px-4 sm:px-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none"
                >
                  <AnimatePresence>
                    {wishes.map((wish, idx) => {
@@ -263,11 +263,11 @@ export function Wishes() {
                          className={`shrink-0 w-[80vw] sm:w-[280px] md:w-[320px] snap-center ${style.bg} p-6 md:p-8 shadow-[0_10px_20px_rgba(0,0,0,0.04)] flex flex-col relative transform transition-all duration-300 hover:scale-[1.02] hover:z-20 hover:shadow-[0_15px_30px_rgba(0,0,0,0.08)] ${style.rotate}`}
                        >
                           {/* Tape effect */}
-                          <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-5 ${style.tape} block rotate-[2deg] shadow-sm backdrop-blur-sm`}></div>
+                          <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-5 ${style.tape} block rotate-2 shadow-sm backdrop-blur-sm`}></div>
                           
                           <Quote className="w-5 h-5 md:w-6 md:h-6 text-[#ffffff]/20 absolute top-4 left-4 md:top-5 md:left-5" />
                           
-                          <p className="font-script text-2xl md:text-3xl leading-relaxed text-[#ffffff] mb-6 mt-4 relative z-10 w-full overflow-hidden text-ellipsis break-words">
+                          <p className="font-script text-2xl md:text-3xl leading-relaxed text-[#ffffff] mb-6 mt-4 relative z-10 w-full overflow-hidden text-ellipsis wrap-break-word">
                             {wish.mensaje}
                           </p>
                           
