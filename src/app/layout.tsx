@@ -26,31 +26,31 @@ const playfair = Playfair_Display({
 
 import { siteConfig } from "@/config/invitation";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 
-  (process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'));
-
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL("https://alexia-brithday-invitation-nextjs-s.vercel.app/"),
   title: `Mis XV - ${siteConfig.client.name}`,
   description: `Te invito a celebrar la fiesta de 15 años de ${siteConfig.client.name}.`,
   openGraph: {
     title: `Mis XV - ${siteConfig.client.name}`,
     description: `Te invito a celebrar la fiesta de 15 años de ${siteConfig.client.name}.`,
+    url: "https://alexia-brithday-invitation-nextjs-s.vercel.app/",
+    siteName: `Mis XV - ${siteConfig.client.name}`,
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "https://alexia-brithday-invitation-nextjs-s.vercel.app/images/invitation/logofinal.png",
         width: 1200,
         height: 630,
-        alt: `Mis XV - ${siteConfig.client.name}`,
-      }
+        alt: `Logo - Mis XV ${siteConfig.client.name}`,
+      },
     ],
+    locale: "es_ES",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: `Mis XV - ${siteConfig.client.name}`,
     description: `Te invito a celebrar la fiesta de 15 años de ${siteConfig.client.name}.`,
-    images: ["/twitter-image.png"],
+    images: ["https://alexia-brithday-invitation-nextjs-s.vercel.app/images/invitation/logofinal.png"],
   }
 };
 
