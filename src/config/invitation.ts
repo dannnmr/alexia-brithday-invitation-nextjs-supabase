@@ -127,29 +127,31 @@ export const siteConfig: SiteConfig = {
   client: {
     name: "Alexia",
     eventType: "MIS XV AÑOS",
-    finalPhrase: 'Aprendí que estar con quienes quiero es suficiente para ser feliz por eso los momentos felices no se viven solo si no con quienes hacen que cada momento valga la pena por eso espero verte en esta noche inolvidable.',
+    finalPhrase:
+      "Aprendí que estar con quienes quiero es suficiente para ser feliz por eso los momentos felices no se viven solo si no con quienes hacen que cada momento valga la pena por eso espero verte en esta noche inolvidable.",
   },
   parents: {
     topLabel: "Junto a mis padres y padrinos",
     fatherName: "Alexis Zabala",
     motherName: "Ana Karen Velasco",
-    godparents: "Vivían Cespedes y Pedro Sanabria",
-    invitationText: "Me llena de alegría invitarles a compartir este día tan especial con nosotros.",
+    godparents: "Pedro Sanabria y Vivían Cespedes",
+    invitationText:
+      "Me llena de alegría invitarles a compartir este día tan especial con nosotros.",
   },
   event: {
     date: {
-      day: "05",
+      day: "12",
       month: "Junio",
       year: "2026",
     },
     time: "19:00 hrs",
-    isoDate: "2026-06-05T19:00:00",
-    rsvpDeadline: "25 de mayo",
+    isoDate: "2026-06-12T19:00:00",
+    rsvpDeadline: "12 de Junio",
     topLabel: "Agenda la fecha",
   },
   location: {
     topLabel: "El Lugar",
-    venueName: "La Rochelle Salón de Eventos", 
+    venueName: "La Rochelle Salón de Eventos",
     address: "Calle 24 de septiembre",
     mapLink: "https://maps.app.goo.gl/XaNSPH8HZ14kjYu56",
     buttonText: "¿Cómo llegar?",
@@ -171,13 +173,13 @@ export const siteConfig: SiteConfig = {
         image: "/images/decorativas/flor.png",
       },
       {
-        time: "20:30",
+        time: "21:00",
         title: "Ceremonia",
         description: "El momento especial: vals y brindis.",
-        image: "/images/decorativas/coctail.png", 
+        image: "/images/decorativas/coctail.png",
       },
       {
-        time: "22:00",
+        time: "21:30",
         title: "Fiesta a bailar",
         description: "Apertura oficial de la pista de baile.",
         image: "/images/decorativas/fiesta.png",
@@ -200,7 +202,7 @@ export const siteConfig: SiteConfig = {
         description: "Gracias por acompañarnos en esta noche mágica.",
         image: "/images/decorativas/taxi2.png",
       },
-    ]
+    ],
   },
   dressCode: {
     topLabel: "Sugerencia de Estilo",
@@ -213,7 +215,7 @@ export const siteConfig: SiteConfig = {
     },
     reservedColorsText: {
       prefix: "LOS COLORES",
-      color1: "FUCSIA",
+      color1: "ROSADO",
       color2: "PLATEADO",
       suffix: "ESTÁN RESERVADOS EXCLUSIVAMENTE PARA LA QUINCEAÑERA.",
     },
@@ -221,7 +223,7 @@ export const siteConfig: SiteConfig = {
       prefix: "¡PREPÁRATE PARA UNA",
       highlight: "NOCHE INOLVIDABLE",
       suffix: "!",
-    }
+    },
   },
   passes: {
     topLabel: "Control de Asistencia",
@@ -232,7 +234,9 @@ export const siteConfig: SiteConfig = {
     unitText: "Persona",
   },
   googleSheets: {
-    webhookUrl: process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL || "https://script.google.com/macros/s/AKfycbzQTqfTwaHMbbNasswGecuqDyk3XKnSz0qRl7YAHYz_FyydWJj8vLRcZzVTLZ_Xu9F9/exec",
+    webhookUrl:
+      process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL ||
+      "https://script.google.com/macros/s/AKfycbzQTqfTwaHMbbNasswGecuqDyk3XKnSz0qRl7YAHYz_FyydWJj8vLRcZzVTLZ_Xu9F9/exec",
   },
   theme: {
     colors: {
@@ -243,15 +247,15 @@ export const siteConfig: SiteConfig = {
       foreground: "#ffffff",
       card: "rgba(15, 17, 26, 0.6)",
       textMuted: "#a0a0a0",
-    }
+    },
   },
   visuals: {
     hero: {
       background: "/images/decorativas/grupo_bolas_disco.png",
-      decorations: []
+      decorations: [],
     },
     itinerary: {
-      background: "#0f111a"
-    }
-  }
+      background: "#0f111a",
+    },
+  },
 };

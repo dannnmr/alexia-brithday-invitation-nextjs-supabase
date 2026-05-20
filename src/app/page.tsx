@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <main className="min-h-screen relative bg-black">
       <Intro />
-      
+
       {/* 
         The content below Intro will be visible once the user interacts with the envelope 
         and the Intro component fades out.
@@ -29,9 +29,9 @@ export default function Home() {
         {/* <Memories /> */}
         <DressCode />
         <Gifts />
+        <RSVP />
         <Music />
         <Location />
-        <RSVP />
         <Passes />
         {/* <Wishes /> */}
         <Gallery />

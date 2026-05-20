@@ -1,10 +1,10 @@
 import { siteConfig } from "../config/invitation";
 
 export function getCalendarLinks() {
-  // Junio 5, 2026 a las 7:00 PM Bolivia (UTC-4) → 23:00 UTC (05 Jun 23:00)
-  // Junio 6, 2026 a las 3:00 AM Bolivia (UTC-4) → 07:00 UTC (06 Jun 07:00)
-  const start = "20260605T230000Z";
-  const end   = "20260606T070000Z";
+  // Junio 12, 2026 a las 7:00 PM Bolivia (UTC-4) → 23:00 UTC (12 Jun 23:00)
+  // Junio 13, 2026 a las 3:00 AM Bolivia (UTC-4) → 07:00 UTC (13 Jun 07:00)
+  const start = "20260612T230000Z";
+  const end   = "20260613T070000Z";
   
   const title    = encodeURIComponent(`XV Años — ${siteConfig.client.name}`);
   const location = encodeURIComponent(siteConfig.location.address);

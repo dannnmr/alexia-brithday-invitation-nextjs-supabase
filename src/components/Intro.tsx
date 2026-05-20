@@ -149,7 +149,7 @@ export function Intro() {
               src="/images/invitation/sobre_izquierdo.png"
               alt="Sobre izquierdo"
               fill
-              className="object-cover object-left scale-[1.15] sm:scale-[1.2] md:scale-[1.1]"
+              className="object-cover object-center scale-[1.15] sm:scale-[1.2] md:scale-[1.1]"
               priority
               sizes="100vw"
             />
@@ -166,7 +166,7 @@ export function Intro() {
               src="/images/invitation/sobre_derecho.png"
               alt="Sobre derecho"
               fill
-              className="object-cover object-right scale-[1.15] sm:scale-[1.2] md:scale-[1.1]"
+              className="object-cover object-center scale-[1.15] sm:scale-[1.2] md:scale-[1.1]"
               priority
               sizes="100vw"
             />
