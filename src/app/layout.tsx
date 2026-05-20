@@ -28,11 +28,11 @@ import { siteConfig } from "@/config/invitation";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://alexia-brithday-invitation-nextjs-s.vercel.app/"),
-  title: `Mis XV - ${siteConfig.client.name}`,
-  description: `Te invito a celebrar la fiesta de 15 años de ${siteConfig.client.name}.`,
+  title: `Mis XV Años de ${siteConfig.client.name} — ¡Estás Invitado!`,
+  description: `Acompáñame a celebrar mis XV Años el 5 de Junio de 2026 a las 19:00 hrs. Una noche mágica llena de amor, música y recuerdos. ¡Espero verte allí!`,
   openGraph: {
-    title: `Mis XV - ${siteConfig.client.name}`,
-    description: `Te invito a celebrar la fiesta de 15 años de ${siteConfig.client.name}.`,
+    title: `Mis XV Años de ${siteConfig.client.name} — ¡Estás Invitado!`,
+    description: `Acompáñame a celebrar mis XV Años el 5 de Junio de 2026 a las 19:00 hrs. Una noche mágica llena de amor, música y recuerdos. ¡Espero verte allí!`,
     url: "https://alexia-brithday-invitation-nextjs-s.vercel.app/",
     siteName: `Mis XV - ${siteConfig.client.name}`,
     locale: "es_ES",
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Mis XV - ${siteConfig.client.name}`,
-    description: `Te invito a celebrar la fiesta de 15 años de ${siteConfig.client.name}.`,
+    title: `Mis XV Años de ${siteConfig.client.name} — ¡Estás Invitado!`,
+    description: `Acompáñame a celebrar mis XV Años el 5 de Junio de 2026 a las 19:00 hrs. Una noche mágica llena de amor, música y recuerdos. ¡Espero verte allí!`,
   }
 };
 
