@@ -110,7 +110,7 @@ export function Countdown() {
               >
                 {/* luxury split-flap card display */}
                 <div 
-                  className="relative w-16 h-20 min-[380px]:w-20 min-[380px]:h-24 sm:w-22 sm:h-26 md:w-28 md:h-34 lg:w-32 lg:h-38 bg-[#0c0c0c] border border-white/6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.05)] flex flex-col items-center justify-center mb-3 overflow-hidden transition-all duration-500 group-hover:border-[#ff007f]/40 group-hover:shadow-[0_0_25px_rgba(255,0,127,0.2),inset_0_1px_1px_rgba(255,255,255,0.1)]"
+                  className="relative w-14 h-16 min-[380px]:w-16 min-[380px]:h-20 sm:w-22 sm:h-26 md:w-28 md:h-34 lg:w-32 lg:h-38 bg-[#0c0c0c] border border-white/6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.05)] flex flex-col items-center justify-center mb-3 overflow-hidden transition-all duration-500 group-hover:border-[#ff007f]/40 group-hover:shadow-[0_0_25px_rgba(255,0,127,0.2),inset_0_1px_1px_rgba(255,255,255,0.1)]"
                   style={{ perspective: "400px" }}
                 >
                   
@@ -129,7 +129,7 @@ export function Countdown() {
                         animate={{ rotateX: 0, opacity: 1 }}
                         exit={{ rotateX: -85, opacity: 0 }}
                         transition={{ duration: 0.45, ease: "easeInOut" }}
-                        className="absolute text-3xl min-[380px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black text-white leading-none tracking-tighter origin-center"
+                        className="absolute text-2xl min-[380px]:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black text-white leading-none tracking-tighter origin-center"
                         style={{ backfaceVisibility: "hidden" }}
                       >
                         {item.value.toString().padStart(2, '0')}
@@ -151,8 +151,8 @@ export function Countdown() {
               
               {index < array.length - 1 && (
                 <div className="flex flex-col items-center justify-start h-full -mx-0.5 md:-mx-1">
-                  <div className="flex items-center justify-center h-20 min-[380px]:h-24 sm:h-26 md:h-34 lg:h-38 mb-3">
-                    <span className="text-base sm:text-lg md:text-2xl text-[#ff007f]/60 drop-shadow-[0_0_8px_rgba(255,0,127,0.5)] animate-[pulse_1.5s_infinite] relative -top-0.5 font-bold">
+                  <div className="flex items-center justify-center h-16 min-[380px]:h-20 sm:h-26 md:h-34 lg:h-38 mb-3">
+                    <span className="text-sm sm:text-lg md:text-2xl text-[#ff007f]/60 drop-shadow-[0_0_8px_rgba(255,0,127,0.5)] animate-[pulse_1.5s_infinite] relative -top-0.5 font-bold">
                       •
                     </span>
                   </div>
