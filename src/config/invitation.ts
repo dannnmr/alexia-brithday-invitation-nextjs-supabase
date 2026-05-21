@@ -146,7 +146,7 @@ export const siteConfig: SiteConfig = {
     },
     time: "19:00 hrs",
     isoDate: "2026-06-12T19:00:00",
-    rsvpDeadline: "12 de Junio",
+    rsvpDeadline: "05 de Junio",
     topLabel: "Agenda la fecha",
   },
   location: {
